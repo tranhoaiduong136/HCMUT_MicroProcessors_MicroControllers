@@ -24,8 +24,8 @@
 #define YELLOW_LED GPIO_PIN_6
 #define GREEN_LED GPIO_PIN_7
 
-#define ON RESET
-#define OFF	SET
+#define RESET ON
+#define SET OFF
 
 void SystemClock_Config(void);
 static void MX_GPIO_Init(void);
