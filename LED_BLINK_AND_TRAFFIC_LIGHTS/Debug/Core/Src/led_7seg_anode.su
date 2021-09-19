@@ -1,0 +1,2 @@
+led_7seg_anode.c:41:6:updatesevenSegmentLEDBuffer	24	static
+led_7seg_anode.c:45:6:sevenSegementLEDDriver	16	static

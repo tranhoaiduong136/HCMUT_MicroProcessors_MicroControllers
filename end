@@ -1,0 +1,124 @@
+warning: LF will be replaced by CRLF in .metadata/.ide.log.
+The file will have its original line endings in your working directory
+warning: LF will be replaced by CRLF in .metadata/.plugins/org.eclipse.cdt.ui/LED_BLINK_AND_TRAFFIC_LIGHTS.build.log.
+The file will have its original line endings in your working directory
+warning: LF will be replaced by CRLF in .metadata/.plugins/org.eclipse.cdt.ui/global-build.log.
+The file will have its original line endings in your working directory
+warning: LF will be replaced by CRLF in LED_BLINK_AND_TRAFFIC_LIGHTS/STM32F103C6TX_FLASH.ld.
+The file will have its original line endings in your working directory
+[1mdiff --git a/.metadata/.ide.log b/.metadata/.ide.log[m
+[1mindex 2d8282d..94302da 100644[m
+[1m--- a/.metadata/.ide.log[m
+[1m+++ b/.metadata/.ide.log[m
+[36m@@ -3184,3 +3184,230 @@[m
+ 2021-09-19 00:30:31,025 [INFO] IPUIPlugin:74 - create IPUIPlugin[m
+ 2021-09-19 00:30:31,028 [INFO] IPUIPlugin:74 - create IPUIPlugin[m
+ 2021-09-19 00:30:31,289 [INFO] OpenFileManager:333 - Restore cursor[m
+[32m+[m[32m2021-09-19 00:51:43,236 [INFO] UtilMem:74 - End SaveConfig() Used Memory: 466861144 Bytes (801112064)[m
+[32m+[m[32m2021-09-19 00:51:44,334 [INFO] UtilMem:74 - End SaveConfig() Used Memory: 492548896 Bytes (801112064)[m
+[32m+[m[32m2021-09-19 00:51:47,279 [INFO] UtilMem:74 - End SaveConfig() Used Memory: 574010168 Bytes (801112064)[m
+[32m+[m[32m2021-09-19 00:51:48,098 [INFO] BlockDiagram:2740 - set Specific Code input for plugin: NVIC[m
+[32m+[m[32m2021-09-19 00:51:48,099 [INFO] BlockDiagram:2740 - set Specific Code input for plugin: SYS[m
+[32m+[m[32m2021-09-19 00:51:48,101 [INFO] BlockDiagram:2740 - set Specific Code input for plugin: GPIO[m
+[32m+[m[32m2021-09-19 00:51:48,101 [INFO] BlockDiagram:2740 - set Specific Code input for plugin: RCC[m
+[32m+[m[32m2021-09-19 00:51:48,104 [INFO] CodeGenerator:663 - code generatio: config db path: C:\ST\STM32CubeIDE_1.7.0\STM32CubeIDE\plugins\com.st.stm32cube.common.mx_6.3.0.202107141111\\db\[m
+[32m+[m[32m2021-09-19 00:51:48,844 [INFO] CodeEngine:239 - oldGeneratedFile, C:\Users\Duong\Desktop\Microprossers\Lab\Chap1\LED_BLINK_AND_TRAFFIC_LIGHTS\MXTmpFiles\license.tmp_save[m
+[32m+[m[32m2021-09-19 00:51:49,659 [INFO] CodeEngine:257 - Generated code: C:\Users\Duong\Desktop\Microprossers\Lab\Chap1\LED_BLINK_AND_TRAFFIC_LIGHTS\MXTmpFiles\license.tmp[m
+[32m+[m[32m2021-09-19 00:51:50,035 [INFO] CodeEngine:239 - oldGeneratedFile, C:\Users\Duong\Desktop\Microprossers\Lab\Chap1\LED_BLINK_AND_TRAFFIC_LIGHTS\MXTmpFiles\gpio.tmp_save[m
+[32m+[m[32m2021-09-19 00:51:50,194 [INFO] CodeEngine:257 - Generated code: C:\Users\Duong\Desktop\Microprossers\Lab\Chap1\LED_BLINK_AND_TRAFFIC_LIGHTS\MXTmpFiles\gpio.tmp[m
+[32m+[m[32m2021-09-19 00:51:50,310 [INFO] CodeEngine:239 - oldGeneratedFile, C:\Users\Duong\Desktop\Microprossers\Lab\Chap1\LED_BLINK_AND_TRAFFIC_LIGHTS\Core\Src\stm32f1xx_it.c_save[m
+[32m+[m[32m2021-09-19 00:51:50,531 [INFO] CodeEngine:257 - Generated code: C:\Users\Duong\Desktop\Microprossers\Lab\Chap1\LED_BLINK_AND_TRAFFIC_LIGHTS\Core\Src\stm32f1xx_it.c[m
+[32m+[m[32m2021-09-19 00:51:50,555 [INFO] CodeEngine:239 - oldGeneratedFile, C:\Users\Duong\Desktop\Microprossers\Lab\Chap1\LED_BLINK_AND_TRAFFIC_LIGHTS\Core\Inc\stm32f1xx_it.h_save[m
+[32m+[m[32m2021-09-19 00:51:50,687 [INFO] CodeEngine:257 - Generated code: C:\Users\Duong\Desktop\Microprossers\Lab\Chap1\LED_BLINK_AND_TRAFFIC_LIGHTS\Core\Inc\stm32f1xx_it.h[m
+[32m+[m[32m2021-09-19 00:51:50,737 [INFO] CodeEngine:239 - oldGeneratedFile, C:\Users\Duong\Desktop\Microprossers\Lab\Chap1\LED_BLINK_AND_TRAFFIC_LIGHTS\Core\Src\stm32f1xx_hal_msp.c_save[m
+[32m+[m[32m2021-09-19 00:51:50,985 [INFO] CodeEngine:257 - Generated code: C:\Users\Duong\Desktop\Microprossers\Lab\Chap1\LED_BLINK_AND_TRAFFIC_LIGHTS\Core\Src\stm32f1xx_hal_msp.c[m
+[32m+[m[32m2021-09-19 00:51:50,994 [INFO] CodeEngine:239 - oldGeneratedFile, C:\Users\Duong\Desktop\Microprossers\Lab\Chap1\LED_BLINK_AND_TRAFFIC_LIGHTS\MXTmpFiles\system.tmp_save[m
+[32m+[m[32m2021-09-19 00:51:51,252 [INFO] CodeEngine:257 - Generated code: C:\Users\Duong\Desktop\Microprossers\Lab\Chap1\LED_BLINK_AND_TRAFFIC_LIGHTS\MXTmpFiles\system.tmp[m
+[32m+[m[32m2021-09-19 00:51:51,320 [INFO] CodeEngine:239 - oldGeneratedFile, C:\Users\Duong\Desktop\Microprossers\Lab\Chap1\LED_BLINK_AND_TRAFFIC_LIGHTS\Core\Inc\stm32f1xx_hal_conf.h_save[m
+[32m+[m[32m2021-09-19 00:51:51,607 [INFO] CodeEngine:257 - Generated code: C:\Users\Duong\Desktop\Microprossers\Lab\Chap1\LED_BLINK_AND_TRAFFIC_LIGHTS\Core\Inc\stm32f1xx_hal_conf.h[m
+[32m+[m[32m2021-09-19 00:51:51,839 [INFO] CodeEngine:239 - oldGeneratedFile, C:\Users\Duong\Desktop\Microprossers\Lab\Chap1\LED_BLINK_AND_TRAFFIC_LIGHTS\Core\Inc\main.h_save[m
+[32m+[m[32m2021-09-19 00:51:52,168 [INFO] CodeEngine:257 - Generated code: C:\Users\Duong\Desktop\Microprossers\Lab\Chap1\LED_BLINK_AND_TRAFFIC_LIGHTS\Core\Inc\main.h[m
+[32m+[m[32m2021-09-19 00:51:52,223 [INFO] CodeEngine:239 - oldGeneratedFile, C:\Users\Duong\Desktop\Microprossers\Lab\Chap1\LED_BLINK_AND_TRAFFIC_LIGHTS\Core\Src\main.c_save[m
+[32m+[m[32m2021-09-19 00:51:52,553 [INFO] CodeEngine:257 - Generated code: C:\Users\Duong\Desktop\Microprossers\Lab\Chap1\LED_BLINK_AND_TRAFFIC_LIGHTS\Core\Src\main.c[m
+[32m+[m[32m2021-09-19 00:51:55,377 [INFO] ProjectBuilder:2578 - Time for Copy HAL[1] : 887mS.[m
+[32m+[m[32m2021-09-19 00:51:55,385 [INFO] ProjectBuilder:3622 - Project Generator version: 3.14.1[m
+[32m+[m[32m2021-09-19 00:51:56,951 [INFO] ConfigFileManager:1271 - The Die is : DIE412[m
+[32m+[m[32m2021-09-19 00:51:57,086 [INFO] ApiDbMcu:468 - Load IP Config File for FATFS[m
+[32m+[m[32m2021-09-19 00:51:57,166 [INFO] ApiDbMcu:468 - Load IP Config File for FREERTOS[m
+[32m+[m[32m2021-09-19 00:51:57,263 [INFO] ApiDbMcu:468 - Load IP Config File for USB_DEVICE[m
+[32m+[m[32m2021-09-19 00:52:02,101 [INFO] ProjectBuilder:3789 - Time for Generating toolchain IDE Files: 6716mS.[m
+[32m+[m[32m2021-09-19 00:52:02,103 [INFO] ProjectBuilder:2457 - Time for Copy CMSIS : 0mS.[m
+[32m+[m[32m2021-09-19 00:52:02,108 [INFO] ProjectBuilder:2457 - Time for Copy CMSIS : 0mS.[m
+[32m+[m[32m2021-09-19 01:06:41,848 [INFO] UtilMem:74 - End SaveConfig() Used Memory: 308638752 Bytes (839909376)[m
+[32m+[m[32m2021-09-19 01:06:43,113 [INFO] UtilMem:74 - End SaveConfig() Used Memory: 332538296 Bytes (839909376)[m
+[32m+[m[32m2021-09-19 01:06:44,866 [INFO] UtilMem:74 - End SaveConfig() Used Memory: 378371104 Bytes (839909376)[m
+[32m+[m[32m2021-09-19 01:06:45,666 [INFO] BlockDiagram:2740 - set Specific Code input for plugin: NVIC[m
+[32m+[m[32m2021-09-19 01:06:45,666 [INFO] BlockDiagram:2740 - set Specific Code input for plugin: SYS[m
+[32m+[m[32m2021-09-19 01:06:45,667 [INFO] BlockDiagram:2740 - set Specific Code input for plugin: GPIO[m
+[32m+[m[32m2021-09-19 01:06:45,667 [INFO] BlockDiagram:2740 - set Specific Code input for plugin: RCC[m
+[32m+[m[32m2021-09-19 01:06:45,668 [INFO] CodeGenerator:663 - code generatio: config db path: C:\ST\STM32CubeIDE_1.7.0\STM32CubeIDE\plugins\com.st.stm32cube.common.mx_6.3.0.202107141111\\db\[m
+[32m+[m[32m2021-09-19 01:06:46,235 [INFO] CodeEngine:239 - oldGeneratedFile, C:\Users\Duong\Desktop\Microprossers\Lab\Chap1\LED_BLINK_AND_TRAFFIC_LIGHTS\MXTmpFiles\license.tmp_save[m
+[32m+[m[32m2021-09-19 01:06:46,359 [INFO] CodeEngine:257 - Generated code: C:\Users\Duong\Desktop\Microprossers\Lab\Chap1\LED_BLINK_AND_TRAFFIC_LIGHTS\MXTmpFiles\license.tmp[m
+[32m+[m[32m2021-09-19 01:06:46,400 [INFO] CodeEngine:239 - oldGeneratedFile, C:\Users\Duong\Desktop\Microprossers\Lab\Chap1\LED_BLINK_AND_TRAFFIC_LIGHTS\MXTmpFiles\gpio.tmp_save[m
+[32m+[m[32m2021-09-19 01:06:46,517 [INFO] CodeEngine:257 - Generated code: C:\Users\Duong\Desktop\Microprossers\Lab\Chap1\LED_BLINK_AND_TRAFFIC_LIGHTS\MXTmpFiles\gpio.tmp[m
+[32m+[m[32m2021-09-19 01:06:46,610 [INFO] CodeEngine:239 - oldGeneratedFile, C:\Users\Duong\Desktop\Microprossers\Lab\Chap1\LED_BLINK_AND_TRAFFIC_LIGHTS\Core\Src\stm32f1xx_it.c_save[m
+[32m+[m[32m2021-09-19 01:06:46,862 [INFO] CodeEngine:257 - Generated code: C:\Users\Duong\Desktop\Microprossers\Lab\Chap1\LED_BLINK_AND_TRAFFIC_LIGHTS\Core\Src\stm32f1xx_it.c[m
+[32m+[m[32m2021-09-19 01:06:46,877 [INFO] CodeEngine:239 - oldGeneratedFile, C:\Users\Duong\Desktop\Microprossers\Lab\Chap1\LED_BLINK_AND_TRAFFIC_LIGHTS\Core\Inc\stm32f1xx_it.h_save[m
+[32m+[m[32m2021-09-19 01:06:47,115 [INFO] CodeEngine:257 - Generated code: C:\Users\Duong\Desktop\Microprossers\Lab\Chap1\LED_BLINK_AND_TRAFFIC_LIGHTS\Core\Inc\stm32f1xx_it.h[m
+[32m+[m[32m2021-09-19 01:06:47,160 [INFO] CodeEngine:239 - oldGeneratedFile, C:\Users\Duong\Desktop\Microprossers\Lab\Chap1\LED_BLINK_AND_TRAFFIC_LIGHTS\Core\Src\stm32f1xx_hal_msp.c_save[m
+[32m+[m[32m2021-09-19 01:06:47,488 [INFO] CodeEngine:257 - Generated code: C:\Users\Duong\Desktop\Microprossers\Lab\Chap1\LED_BLINK_AND_TRAFFIC_LIGHTS\Core\Src\stm32f1xx_hal_msp.c[m
+[32m+[m[32m2021-09-19 01:06:47,496 [INFO] CodeEngine:239 - oldGeneratedFile, C:\Users\Duong\Desktop\Microprossers\Lab\Chap1\LED_BLINK_AND_TRAFFIC_LIGHTS\MXTmpFiles\system.tmp_save[m
+[32m+[m[32m2021-09-19 01:06:47,668 [INFO] CodeEngine:257 - Generated code: C:\Users\Duong\Desktop\Microprossers\Lab\Chap1\LED_BLINK_AND_TRAFFIC_LIGHTS\MXTmpFiles\system.tmp[m
+[32m+[m[32m2021-09-19 01:06:47,709 [INFO] CodeEngine:239 - oldGeneratedFile, C:\Users\Duong\Desktop\Microprossers\Lab\Chap1\LED_BLINK_AND_TRAFFIC_LIGHTS\Core\Inc\stm32f1xx_hal_conf.h_save[m
+[32m+[m[32m2021-09-19 01:06:47,949 [INFO] CodeEngine:257 - Generated code: C:\Users\Duong\Desktop\Microprossers\Lab\Chap1\LED_BLINK_AND_TRAFFIC_LIGHTS\Core\Inc\stm32f1xx_hal_conf.h[m
+[32m+[m[32m2021-09-19 01:06:48,028 [INFO] CodeEngine:239 - oldGeneratedFile, C:\Users\Duong\Desktop\Microprossers\Lab\Chap1\LED_BLINK_AND_TRAFFIC_LIGHTS\Core\Inc\main.h_save[m
+[32m+[m[32m2021-09-19 01:06:48,176 [INFO] CodeEngine:257 - Generated code: C:\Users\Duong\Desktop\Microprossers\Lab\Chap1\LED_BLINK_AND_TRAFFIC_LIGHTS\Core\Inc\main.h[m
+[32m+[m[32m2021-09-19 01:06:48,198 [INFO] CodeEngine:239 - oldGeneratedFile, C:\Users\Duong\Desktop\Microprossers\Lab\Chap1\LED_BLINK_AND_TRAFFIC_LIGHTS\Core\Src\main.c_save[m
+[32m+[m[32m2021-09-19 01:06:48,429 [INFO] CodeEngine:257 - Generated code: C:\Users\Duong\Desktop\Microprossers\Lab\Chap1\LED_BLINK_AND_TRAFFIC_LIGHTS\Core\Src\main.c[m
+[32m+[m[32m2021-09-19 01:06:50,523 [INFO] ProjectBuilder:2578 - Time for Copy HAL[1] : 188mS.[m
+[32m+[m[32m2021-09-19 01:06:50,529 [INFO] ProjectBuilder:3622 - Project Generator version: 3.14.1[m
+[32m+[m[32m2021-09-19 01:06:51,610 [INFO] ConfigFileManager:1271 - The Die is : DIE412[m
+[32m+[m[32m2021-09-19 01:06:55,705 [INFO] ProjectBuilder:3789 - Time for Generating toolchain IDE Files: 5176mS.[m
+[32m+[m[32m2021-09-19 01:06:55,706 [INFO] ProjectBuilder:2457 - Time for Copy CMSIS : 0mS.[m
+[32m+[m[32m2021-09-19 01:06:55,714 [INFO] ProjectBuilder:2457 - Time for Copy CMSIS : 1mS.[m
+[32m+[m[32m2021-09-19 15:42:32,565 [INFO] UtilMem:74 - End SaveConfig() Used Memory: 315163384 Bytes (835715072)[m
+[32m+[m[32m2021-09-19 15:43:09,559 [INFO] UtilMem:74 - End SaveConfig() Used Memory: 347351968 Bytes (835715072)[m
+[32m+[m[32m2021-09-19 15:47:09,564 [INFO] UtilMem:74 - End SaveConfig() Used Memory: 410518048 Bytes (835715072)[m
+[32m+[m[32m2021-09-19 15:47:10,743 [INFO] BlockDiagram:2740 - set Specific Code input for plugin: NVIC[m
+[32m+[m[32m2021-09-19 15:47:10,758 [INFO] BlockDiagram:2740 - set Specific Code input for plugin: SYS[m
+[32m+[m[32m2021-09-19 15:47:10,758 [INFO] BlockDiagram:2740 - set Specific Code input for plugin: GPIO[m
+[32m+[m[32m2021-09-19 15:47:10,758 [INFO] BlockDiagram:2740 - set Specific Code input for plugin: RCC[m
+[32m+[m[32m2021-09-19 15:47:10,760 [INFO] CodeGenerator:663 - code generatio: config db path: C:\ST\STM32CubeIDE_1.7.0\STM32CubeIDE\plugins\com.st.stm32cube.common.mx_6.3.0.202107141111\\db\[m
+[32m+[m[32m2021-09-19 15:47:11,490 [INFO] CodeEngine:239 - oldGeneratedFile, C:\Users\Duong\Desktop\Microprossers\Lab\Chap1\LED_BLINK_AND_TRAFFIC_LIGHTS\MXTmpFiles\license.tmp_save[m
+[32m+[m[32m2021-09-19 15:47:11,618 [INFO] CodeEngine:257 - Generated code: C:\Users\Duong\Desktop\Microprossers\Lab\Chap1\LED_BLINK_AND_TRAFFIC_LIGHTS\MXTmpFiles\license.tmp[m
+[32m+[m[32m2021-09-19 15:47:11,992 [INFO] CodeEngine:239 - oldGeneratedFile, C:\Users\Duong\Desktop\Microprossers\Lab\Chap1\LED_BLINK_AND_TRAFFIC_LIGHTS\MXTmpFiles\gpio.tmp_save[m
+[32m+[m[32m2021-09-19 15:47:12,233 [INFO] CodeEngine:257 - Generated code: C:\Users\Duong\Desktop\Microprossers\Lab\Chap1\LED_BLINK_AND_TRAFFIC_LIGHTS\MXTmpFiles\gpio.tmp[m
+[32m+[m[32m2021-09-19 15:47:12,654 [INFO] CodeEngine:239 - oldGeneratedFile, C:\Users\Duong\Desktop\Microprossers\Lab\Chap1\LED_BLINK_AND_TRAFFIC_LIGHTS\Core\Src\stm32f1xx_it.c_save[m
+[32m+[m[32m2021-09-19 15:47:12,956 [INFO] CodeEngine:257 - Generated code: C:\Users\Duong\Desktop\Microprossers\Lab\Chap1\LED_BLINK_AND_TRAFFIC_LIGHTS\Core\Src\stm32f1xx_it.c[m
+[32m+[m[32m2021-09-19 15:47:13,012 [INFO] CodeEngine:239 - oldGeneratedFile, C:\Users\Duong\Desktop\Microprossers\Lab\Chap1\LED_BLINK_AND_TRAFFIC_LIGHTS\Core\Inc\stm32f1xx_it.h_save[m
+[32m+[m[32m2021-09-19 15:47:13,295 [INFO] CodeEngine:257 - Generated code: C:\Users\Duong\Desktop\Microprossers\Lab\Chap1\LED_BLINK_AND_TRAFFIC_LIGHTS\Core\Inc\stm32f1xx_it.h[m
+[32m+[m[32m2021-09-19 15:47:13,422 [INFO] CodeEngine:239 - oldGeneratedFile, C:\Users\Duong\Desktop\Microprossers\Lab\Chap1\LED_BLINK_AND_TRAFFIC_LIGHTS\Core\Src\stm32f1xx_hal_msp.c_save[m
+[32m+[m[32m2021-09-19 15:47:13,684 [INFO] CodeEngine:257 - Generated code: C:\Users\Duong\Desktop\Microprossers\Lab\Chap1\LED_BLINK_AND_TRAFFIC_LIGHTS\Core\Src\stm32f1xx_hal_msp.c[m
+[32m+[m[32m2021-09-19 15:47:13,725 [INFO] CodeEngine:239 - oldGeneratedFile, C:\Users\Duong\Desktop\Microprossers\Lab\Chap1\LED_BLINK_AND_TRAFFIC_LIGHTS\MXTmpFiles\system.tmp_save[m
+[32m+[m[32m2021-09-19 15:47:14,006 [INFO] CodeEngine:257 - Generated code: C:\Users\Duong\Desktop\Microprossers\Lab\Chap1\LED_BLINK_AND_TRAFFIC_LIGHTS\MXTmpFiles\system.tmp[m
+[32m+[m[32m2021-09-19 15:47:14,109 [INFO] CodeEngine:239 - oldGeneratedFile, C:\Users\Duong\Desktop\Microprossers\Lab\Chap1\LED_BLINK_AND_TRAFFIC_LIGHTS\Core\Inc\stm32f1xx_hal_conf.h_save[m
+[32m+[m[32m2021-09-19 15:47:14,438 [INFO] CodeEngine:257 - Generated code: C:\Users\Duong\Desktop\Microprossers\Lab\Chap1\LED_BLINK_AND_TRAFFIC_LIGHTS\Core\Inc\stm32f1xx_hal_conf.h[m
+[32m+[m[32m2021-09-19 15:47:14,626 [INFO] CodeEngine:239 - oldGeneratedFile, C:\Users\Duong\Desktop\Microprossers\Lab\Chap1\LED_BLINK_AND_TRAFFIC_LIGHTS\Core\Inc\main.h_save[m
+[32m+[m[32m2021-09-19 15:47:14,902 [INFO] CodeEngine:257 - Generated code: C:\Users\Duong\Desktop\Microprossers\Lab\Chap1\LED_BLINK_AND_TRAFFIC_LIGHTS\Core\Inc\main.h[m
+[32m+[m[32m2021-09-19 15:47:14,991 [INFO] CodeEngine:239 - oldGeneratedFile, C:\Users\Duong\Desktop\Microprossers\Lab\Chap1\LED_BLINK_AND_TRAFFIC_LIGHTS\Core\Src\main.c_save[m
+[32m+[m[32m2021-09-19 15:47:15,467 [INFO] CodeEngine:257 - Generated code: C:\Users\Duong\Desktop\Microprossers\Lab\Chap1\LED_BLINK_AND_TRAFFIC_LIGHTS\Core\Src\main.c[m
+[32m+[m[32m2021-09-19 15:47:21,890 [INFO] ProjectBuilder:2578 - Time for Copy HAL[1] : 2255mS.[m
+[32m+[m[32m2021-09-19 15:47:21,898 [INFO] ProjectBuilder:3622 - Project Generator version: 3.14.1[m
+[32m+[m[32m2021-09-19 15:47:22,979 [INFO] ConfigFileManager:1271 - The Die is : DIE412[m
+[32m+[m[32m2021-09-19 15:47:29,483 [INFO] ProjectBuilder:3789 - Time for Generating toolchain IDE Files: 7585mS.[m
+[32m+[m[32m2021-09-19 15:47:29,484 [INFO] ProjectBuilder:2457 - Time for Copy CMSIS : 1mS.[m
+[32m+[m[32m2021-09-19 15:47:29,491 [INFO] ProjectBuilder:2457 - Time for Copy CMSIS : 0mS.[m
+[32m+[m[32m2021-09-19 15:49:50,774 [INFO] UtilMem:74 - End SaveConfig() Used Memory: 439120280 Bytes (861929472)[m
+[32m+[m[32m2021-09-19 15:49:51,864 [INFO] UtilMem:74 - End SaveConfig() Used Memory: 458268584 Bytes (861929472)[m
+[32m+[m[32m2021-09-19 15:49:52,960 [INFO] UtilMem:74 - End SaveConfig() Used Memory: 528524096 Bytes (861929472)[m
+[32m+[m[32m2021-09-19 15:49:53,806 [INFO] BlockDiagram:2740 - set Specific Code input for plugin: NVIC[m
+[32m+[m[32m2021-09-19 15:49:53,806 [INFO] BlockDiagram:2740 - set Specific Code input for plugin: SYS[m
+[32m+[m[32m2021-09-19 15:49:53,806 [INFO] BlockDiagram:2740 - set Specific Code input for plugin: GPIO[m
+[32m+[m[32m2021-09-19 15:49:53,806 [INFO] BlockDiagram:2740 - set Specific Code input for plugin: RCC[m
+[32m+[m[32m2021-09-19 15:49:53,808 [INFO] CodeGenerator:663 - code generatio: config db path: C:\ST\STM32CubeIDE_1.7.0\STM32CubeIDE\plugins\com.st.stm32cube.common.mx_6.3.0.202107141111\\db\[m
+[32m+[m[32m2021-0

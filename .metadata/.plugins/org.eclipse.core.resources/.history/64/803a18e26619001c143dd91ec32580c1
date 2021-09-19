@@ -1,0 +1,21 @@
+/*
+ * led_7seg_anode.c
+ *
+ *  Created on: Sep 19, 2021
+ *      Author: Duong
+ */
+#include "main.h"
+#include "led_7seg_anode.h"
+// Number of 7SEG
+#define NUMS_7SEGS 1
+//
+
+uint8_t sevenSegmentLEDConversion[10]{};
+
+uint8_t sevenSegmentLEDBuffer[NUMS_7SEGS];
+
+
+void sevenSegementLEDDriver(void){
+
+}
+
