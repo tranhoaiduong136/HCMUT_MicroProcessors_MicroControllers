@@ -8,7 +8,7 @@
 #ifndef INC_LED_7SEG_ANODE_H_
 #define INC_LED_7SEG_ANODE_H_
 // Number of 7SEG
-#define NUMS_7SEGS 1
+#define NUMS_7SEGS 2
 // Gate
 #define SEG0 GPIO_PIN_0
 #define SEG1 GPIO_PIN_1
@@ -18,9 +18,20 @@
 #define SEG5 GPIO_PIN_5
 #define SEG6 GPIO_PIN_6
 
+#define SEG7 GPIO_PIN_7
+#define SEG8 GPIO_PIN_8
+#define SEG9 GPIO_PIN_9
+#define SEG10 GPIO_PIN_10
+#define SEG11 GPIO_PIN_11
+#define SEG12 GPIO_PIN_12
+#define SEG13 GPIO_PIN_13
+
+
+
 // Main func
-void sevenSegmentLEDDriver(void);
-void updatesevenSegmentLEDBuffer(uint8_t);
+void sevenSegmentLEDInit(void);
+void sevenSegementLEDDriver(int);
+void updatesevenSegmentLEDBuffer(uint8_t,int);
 
 
 #endif /* INC_LED_7SEG_ANODE_H_ */
