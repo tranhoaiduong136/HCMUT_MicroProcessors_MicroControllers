@@ -1,6 +1,51 @@
-11:45:08 **** Incremental Build of configuration Debug for project LED_BLINK_AND_TRAFFIC_LIGHTS ****
+17:05:54 **** Incremental Build of configuration Debug for project LED_BLINK_AND_TRAFFIC_LIGHTS ****
 make -j4 all 
 arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103x6 -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc "../Core/Src/matrix_led.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103x6 -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/matrix_led.d" -MT"Core/Src/matrix_led.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/matrix_led.o"
+../Core/Src/matrix_led.c:27:36: warning: initialization of 'uint8_t (*)[10]' {aka 'unsigned char (*)[10]'} from incompatible pointer type 'uint8_t *' {aka 'unsigned char *'} [-Wincompatible-pointer-types]
+   27 | uint8_t (*numberConversion)[10] = {number0Conversion,number1Conversion,number2Conversion,number3Conversion,
+      |                                    ^~~~~~~~~~~~~~~~~
+../Core/Src/matrix_led.c:27:36: note: (near initialization for 'numberConversion')
+../Core/Src/matrix_led.c:27:54: warning: excess elements in scalar initializer
+   27 | uint8_t (*numberConversion)[10] = {number0Conversion,number1Conversion,number2Conversion,number3Conversion,
+      |                                                      ^~~~~~~~~~~~~~~~~
+../Core/Src/matrix_led.c:27:54: note: (near initialization for 'numberConversion')
+../Core/Src/matrix_led.c:27:72: warning: excess elements in scalar initializer
+   27 | uint8_t (*numberConversion)[10] = {number0Conversion,number1Conversion,number2Conversion,number3Conversion,
+      |                                                                        ^~~~~~~~~~~~~~~~~
+../Core/Src/matrix_led.c:27:72: note: (near initialization for 'numberConversion')
+../Core/Src/matrix_led.c:27:90: warning: excess elements in scalar initializer
+   27 | uint8_t (*numberConversion)[10] = {number0Conversion,number1Conversion,number2Conversion,number3Conversion,
+      |                                                                                          ^~~~~~~~~~~~~~~~~
+../Core/Src/matrix_led.c:27:90: note: (near initialization for 'numberConversion')
+../Core/Src/matrix_led.c:28:3: warning: excess elements in scalar initializer
+   28 |   number3Conversion,number4Conversion,number5Conversion,number6Conversion,
+      |   ^~~~~~~~~~~~~~~~~
+../Core/Src/matrix_led.c:28:3: note: (near initialization for 'numberConversion')
+../Core/Src/matrix_led.c:28:21: warning: excess elements in scalar initializer
+   28 |   number3Conversion,number4Conversion,number5Conversion,number6Conversion,
+      |                     ^~~~~~~~~~~~~~~~~
+../Core/Src/matrix_led.c:28:21: note: (near initialization for 'numberConversion')
+../Core/Src/matrix_led.c:28:39: warning: excess elements in scalar initializer
+   28 |   number3Conversion,number4Conversion,number5Conversion,number6Conversion,
+      |                                       ^~~~~~~~~~~~~~~~~
+../Core/Src/matrix_led.c:28:39: note: (near initialization for 'numberConversion')
+../Core/Src/matrix_led.c:28:57: warning: excess elements in scalar initializer
+   28 |   number3Conversion,number4Conversion,number5Conversion,number6Conversion,
+      |                                                         ^~~~~~~~~~~~~~~~~
+../Core/Src/matrix_led.c:28:57: note: (near initialization for 'numberConversion')
+../Core/Src/matrix_led.c:29:3: warning: excess elements in scalar initializer
+   29 |   number7Conversion,number8Conversion,number9Conversion};
+      |   ^~~~~~~~~~~~~~~~~
+../Core/Src/matrix_led.c:29:3: note: (near initialization for 'numberConversion')
+../Core/Src/matrix_led.c:29:21: warning: excess elements in scalar initializer
+   29 |   number7Conversion,number8Conversion,number9Conversion};
+      |                     ^~~~~~~~~~~~~~~~~
+../Core/Src/matrix_led.c:29:21: note: (near initialization for 'numberConversion')
+../Core/Src/matrix_led.c:29:39: warning: excess elements in scalar initializer
+   29 |   number7Conversion,number8Conversion,number9Conversion};
+      |                                       ^~~~~~~~~~~~~~~~~
+../Core/Src/matrix_led.c:29:39: note: (near initialization for 'numberConversion')
 arm-none-eabi-gcc -o "LED_BLINK_AND_TRAFFIC_LIGHTS.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\Duong\Desktop\Microprossers\Lab\Chap1\LED_BLINK_AND_TRAFFIC_LIGHTS\STM32F103C6TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="LED_BLINK_AND_TRAFFIC_LIGHTS.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 Finished building target: LED_BLINK_AND_TRAFFIC_LIGHTS.elf
  
@@ -9,12 +54,12 @@ arm-none-eabi-objdump -h -S  LED_BLINK_AND_TRAFFIC_LIGHTS.elf  > "LED_BLINK_AND_
 arm-none-eabi-objcopy  -O ihex  LED_BLINK_AND_TRAFFIC_LIGHTS.elf  "LED_BLINK_AND_TRAFFIC_LIGHTS.hex"
 arm-none-eabi-objcopy  -O binary  LED_BLINK_AND_TRAFFIC_LIGHTS.elf  "LED_BLINK_AND_TRAFFIC_LIGHTS.bin"
    text	   data	    bss	    dec	    hex	filename
-   5124	     96	   1576	   6796	   1a8c	LED_BLINK_AND_TRAFFIC_LIGHTS.elf
+   4924	     68	   1572	   6564	   19a4	LED_BLINK_AND_TRAFFIC_LIGHTS.elf
 Finished building: default.size.stdout
-Finished building: LED_BLINK_AND_TRAFFIC_LIGHTS.list
  
 Finished building: LED_BLINK_AND_TRAFFIC_LIGHTS.bin
- 
- 
 Finished building: LED_BLINK_AND_TRAFFIC_LIGHTS.hex
+Finished building: LED_BLINK_AND_TRAFFIC_LIGHTS.list
+ 
+ 
  

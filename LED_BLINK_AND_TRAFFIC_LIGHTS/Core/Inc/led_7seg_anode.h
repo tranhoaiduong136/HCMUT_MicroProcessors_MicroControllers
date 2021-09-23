@@ -30,8 +30,8 @@
 
 // Main func
 void sevenSegmentLEDInit(void);
-void sevenSegementLEDDriver(int);
 void updatesevenSegmentLEDBuffer(uint8_t,int);
+void sevenSegementLEDDriver(int);
 
 
 #endif /* INC_LED_7SEG_ANODE_H_ */

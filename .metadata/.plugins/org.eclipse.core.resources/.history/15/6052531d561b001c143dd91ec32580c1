@@ -1,0 +1,53 @@
+/*
+ * matrix_led.c
+ *
+ *  Created on: Sep 21, 2021
+ *      Author: Duong
+ */
+
+#include "main.h"
+#include "matrix_led.h"
+
+static uint8_t matrixLEDBuffer[NUMS_MLED];
+uint16_t colConversionGATE[5] = {CLK1,CLK2,CLK3,CLK4,CLK5};
+uint16_t rowConversionGATE[7] = {CLK6,CLK7,CLK8,CLK9,CLK10,CLK11,CLK12};
+// NUmber Conversion Variable:
+uint8_t number0Conversion[5] = {0x3E,0x41,0x41,0x41,0x3E};
+uint8_t number1Conversion[5] = {0x11,0x21,0x7F,0x01,0x01};
+uint8_t number2Conversion[5] = {0x43,0x45,0x49,0x51,0x61};
+uint8_t number3Conversion[5] = {};
+uint8_t number4Conversion[5] = {};
+uint8_t number5Conversion[5] = {};
+uint8_t number6Conversion[5] = {};
+uint8_t number7Conversion[5] = {};
+uint8_t number8Conversion[5] = {};
+uint8_t number9Conversion[5] = {};
+uint8_t number10Conversion[5] = {};
+uint8_t number11Conversion[5] = {};
+uint8_t number12Conversion[5] = {};
+
+uint8_t numberConversion[13] = {number0Conversion,number1Conversion,number2Conversion,number3Conversion,
+		number3Conversion,number4Conversion,number5Conversion,number6Conversion,
+		number7Conversion,number8Conversion,number9Conversion,number10Conversion,
+		number11Conversion,number12Conversion};
+
+void matrixLEDInit(void){
+	// Number 0
+	for(int i = 0; i < 5;i++){
+		if()
+	}
+}
+void updatematrixLEDBuffer(uint8_t val,int idx){
+	matrixLEDBuffer[idx] = val;
+}
+void matrixLEDDriver(int idx){
+
+}
+void clearAllClock(void){
+	for(int i = 0;i < 5;i++){
+		HAL_GPIO_WritePin(GROUP_PIN, colConversionGATE[i], OFF);
+	}
+	for(int j = 0;j < 7;j++){
+		HAL_GPIO_WritePin(GROUP_PIN, rowConversionGATE[i], OFF);
+	}
+}

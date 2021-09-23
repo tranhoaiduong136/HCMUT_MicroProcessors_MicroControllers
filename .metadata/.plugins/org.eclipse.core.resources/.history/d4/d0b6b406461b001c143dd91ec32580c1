@@ -1,0 +1,25 @@
+/*
+ * matrix_led.c
+ *
+ *  Created on: Sep 21, 2021
+ *      Author: Duong
+ */
+
+#include "main.h"
+#include "matrix_led.h"
+
+static uint8_t matrixLEDBuffer[NUMS_MLED];
+
+
+void matrixLEDInit(void){
+
+}
+void updatematrixLEDBuffer(uint8_t val,int idx){
+
+}
+void matrixLEDDriver(int idx){
+
+}
+void clearAllClock(void){
+
+}

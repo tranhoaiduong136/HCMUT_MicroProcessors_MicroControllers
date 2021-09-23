@@ -1,0 +1,29 @@
+/*
+ * matrix_led.c
+ *
+ *  Created on: Sep 21, 2021
+ *      Author: Duong
+ */
+
+#include "main.h"
+#include "matrix_led.h"
+
+static uint8_t matrixLEDBuffer[NUMS_MLED];
+uint16_t colConversionGATE[5] = {CLK1,CLK2,CLK3,CLK4,CLK5};
+uint16_t rowConversionGATE[7] = {CLK6,CLK7,CLK8,CLK9,CLK10,CLK11,CLK12};
+
+
+void matrixLEDInit(void){
+	HAL_GPIO_WritePin(GROUP_PIN, colConversionGATE[0], ON);
+	//HAL_GPIO_WritePin(GROUP_PIN,rowConversionGATE[2],ON);
+
+}
+void updatematrixLEDBuffer(uint8_t val,int idx){
+	matrixLEDBuffer[idx] = val;
+}
+void matrixLEDDriver(int idx){
+
+}
+void clearAllClock(void){
+
+}

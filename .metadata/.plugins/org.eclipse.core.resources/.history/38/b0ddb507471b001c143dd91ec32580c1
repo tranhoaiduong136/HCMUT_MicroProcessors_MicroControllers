@@ -1,0 +1,27 @@
+/*
+ * matrix_led.c
+ *
+ *  Created on: Sep 21, 2021
+ *      Author: Duong
+ */
+
+#include "main.h"
+#include "matrix_led.h"
+
+static uint8_t matrixLEDBuffer[NUMS_MLED];
+uint8_t colConversionGATE[5] = {CLK11,CLK3,CLK4,CLK10,CLK6};
+uint8_t rowConversionGATE[7] = {CLK9,CLK12,CLK8,CLK5,CLK1,CLK7,CLK2};
+
+
+void matrixLEDInit(void){
+
+}
+void updatematrixLEDBuffer(uint8_t val,int idx){
+
+}
+void matrixLEDDriver(int idx){
+
+}
+void clearAllClock(void){
+
+}
