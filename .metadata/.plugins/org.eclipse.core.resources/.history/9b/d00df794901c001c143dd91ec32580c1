@@ -30,7 +30,6 @@ uint8_t number11Conversion[COLS] = {0x00,0x01,0x00,0x00,0x00};
 
 static uint8_t sevenbitConversion[ROWS] = {0x01,0x02,0x04,0x08,0x10,0x20,0x40};
 
-// Will try this later
 // uint8_t  (*numberConversion)[13] = {number0Conversion,number1Conversion,number2Conversion,number3Conversion,number4Conversion,
 // number5Conversion,number6Conversion,number7Conversion,number8Conversion,number9Conversion,number10Conversion,
 // number11Conversion};
@@ -125,7 +124,7 @@ void clearNumberOnClock(int num){
 		}
 }
 void matrixLEDDriver(int idx){
-	// Nothing yet
+
 }
 void clearAllClock(void){
 	for(int i = 0;i < 7;i++){
