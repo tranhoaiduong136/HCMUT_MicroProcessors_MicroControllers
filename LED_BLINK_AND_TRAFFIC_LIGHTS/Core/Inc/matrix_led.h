@@ -9,6 +9,7 @@
 #define INC_MATRIX_LED_H_
 // Numbers of matrix led
 #define NUMS_MLED 1
+#define NUMS_LEDS 12
 // Define gate
 #define GROUP_PIN GPIOA
 #define COLS 5
@@ -29,13 +30,15 @@
 // Define sign
 #define ON SET
 #define OFF RESET
-#define SPEED 100
+#define SPEED 200
 //Main functions
+uint8_t *typeFunc(int);
 void matrixLEDInit(void);
-void updatematrixLEDBuffer(uint8_t,int);
+void updatematrixLEDBuffer(int,int);
 void matrixLEDDriver(int);
 
-
+void setNumberOnClock(int);
+void clearNumberOnClock(int);
 
 void clearAllClock(void);
 #endif /* INC_MATRIX_LED_H_ */
