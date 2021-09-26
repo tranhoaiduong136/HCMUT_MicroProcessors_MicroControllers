@@ -31,7 +31,7 @@
 // Define sign
 #define ON SET
 #define OFF RESET
-#define SPEED 100
+#define SPEED 200
 //Main functions
 uint8_t *typeFunc(int);
 void matrixLEDInit(void);

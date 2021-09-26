@@ -530,7 +530,7 @@ void matrixLEDInit(void){
 		          }
 		        }
 		     HAL_Delay(SPEED);
- 80003d6:	20c8      	movs	r0, #200	; 0xc8
+ 80003d6:	2064      	movs	r0, #100	; 0x64
  80003d8:	f000 fa64 	bl	80008a4 <HAL_Delay>
 		     for(int j = 0 ; j < ROWS;j++){
  80003dc:	2300      	movs	r3, #0
@@ -911,7 +911,7 @@ void displayMatrixLed(int num){
  800067c:	6878      	ldr	r0, [r7, #4]
  800067e:	f7ff feef 	bl	8000460 <setNumberOnClock>
 	HAL_Delay(SPEED);
- 8000682:	20c8      	movs	r0, #200	; 0xc8
+ 8000682:	2064      	movs	r0, #100	; 0x64
  8000684:	f000 f90e 	bl	80008a4 <HAL_Delay>
 	clearNumberOnClock(num);
  8000688:	6878      	ldr	r0, [r7, #4]
