@@ -12,7 +12,6 @@ int matrixLEDBuffer[NUMS_MLED];
 
 static uint16_t colConversionGATE[COLS] = {CLK1,CLK2,CLK3,CLK4,CLK5};
 static uint16_t rowConversionGATE[ROWS] = {CLK6,CLK7,CLK8,CLK9,CLK10,CLK11,CLK12};
-
 // NUmber Conversion Variable:
 uint8_t initialState[COLS] = {0x3E,0x41,0x41,0x41,0x3E};
 
@@ -30,7 +29,9 @@ uint8_t number10Conversion[COLS] = {0x04,0x00,0x00,0x00,0x00};
 uint8_t number11Conversion[COLS] = {0x00,0x01,0x00,0x00,0x00};
 
 static uint8_t sevenbitConversion[ROWS] = {0x01,0x02,0x04,0x08,0x10,0x20,0x40};
-
+static int seconds = 0;
+static int minutes = 0;
+static int hours = 0;
 // Will try this later
 // uint8_t  (*numberConversion)[13] = {number0Conversion,number1Conversion,number2Conversion,number3Conversion,number4Conversion,
 // number5Conversion,number6Conversion,number7Conversion,number8Conversion,number9Conversion,number10Conversion,
@@ -97,17 +98,8 @@ void matrixLEDInit(void){
 		         	HAL_GPIO_WritePin(GROUP_PIN,colConversionGATE[i], OFF);
 		        }
 }
-void updatematrixLEDBuffer(int seconds,int minutes,int hours){
-		++seconds;
-		if(seconds > 11){
-			++minutes;
-			seconds = 0;
-		}
-		if(minutes > 11){
-			++hours;
-			minutes = 0;
-			seconds = 0;
-		}
+void updatematrixLEDBuffer(int val,int idx){
+	matrixLEDBuffer[idx] = val;
 }
 void setNumberOnClock(int num){
 	uint8_t *temp1 = typeFunc(matrixLEDBuffer[0]);
@@ -134,23 +126,6 @@ void clearNumberOnClock(int num){
 		     }
 		}
 }
-// Show CLK here
-void clockInit(void){
-	seconds = 0;
-	minutes = 0;
-	hours = 0;
-	//displayMatrixLed(0);
-}
-void displayMatrixLed(int num){
-	setNumberOnClock(num);
-	HAL_Delay(SPEED);
-	clearNumberOnClock(num);
-}
-void matrixLEDDriver(void){
-	displayMatrixLed(hours);
-	displayMatrixLed(minutes);
-	displayMatrixLed(seconds);
-}
 void clearAllClock(void){
 	for(int i = 0;i < 7;i++){
 		HAL_GPIO_WritePin(GROUP_PIN, rowConversionGATE[i], ON);
@@ -159,3 +134,34 @@ void clearAllClock(void){
 		}
 	}
 }
+//Ex10
+void clockInit(void){
+	seconds = 0;
+	minutes = 0;
+	hours = 0;
+	//displayMatrixLed(0);
+}
+void updateBuffer(){
+	++seconds;
+	if(seconds > 11){
+		++minutes;
+		seconds = 0;
+	}
+	if(minutes > 11){
+		++hours;
+		minutes = 0;
+		seconds = 0;
+	}
+}
+void displayMatrixLed(int num){
+	updatematrixLEDBuffer(num,0);
+	setNumberOnClock(num);
+	HAL_Delay(SPEED);
+	clearNumberOnClock(num);
+}
+void matrixLEDDriver(int idx){
+	displayMatrixLed(hours);
+	displayMatrixLed(minutes);
+	displayMatrixLed(seconds);
+}
+

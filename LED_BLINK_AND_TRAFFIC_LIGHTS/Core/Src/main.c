@@ -93,18 +93,15 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-  //matrixLEDInit();
+  matrixLEDInit();
   clearAllClock();
   clockInit();
-  int count = 0;
   while (1)
   {
-	  updatematrixLEDBuffer(seconds,minutes,hours);
-	  setNumberOnClock(count);
-	  HAL_Delay(SPEED);
-	  clearNumberOnClock(count);
-	  count = (count+1)%12;
-	  /* USER CODE END WHILE */
+	 clearAllClock();
+	 matrixLEDDriver(0);
+	 updateBuffer();
+    /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
   }
