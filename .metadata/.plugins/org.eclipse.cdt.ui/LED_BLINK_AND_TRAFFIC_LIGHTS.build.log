@@ -1,4 +1,4 @@
-11:45:08 **** Incremental Build of configuration Debug for project LED_BLINK_AND_TRAFFIC_LIGHTS ****
+17:40:29 **** Incremental Build of configuration Debug for project LED_BLINK_AND_TRAFFIC_LIGHTS ****
 make -j4 all 
 arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103x6 -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
 arm-none-eabi-gcc -o "LED_BLINK_AND_TRAFFIC_LIGHTS.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\Duong\Desktop\Microprossers\Lab\Chap1\LED_BLINK_AND_TRAFFIC_LIGHTS\STM32F103C6TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="LED_BLINK_AND_TRAFFIC_LIGHTS.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
@@ -9,15 +9,15 @@ arm-none-eabi-objdump -h -S  LED_BLINK_AND_TRAFFIC_LIGHTS.elf  > "LED_BLINK_AND_
 arm-none-eabi-objcopy  -O ihex  LED_BLINK_AND_TRAFFIC_LIGHTS.elf  "LED_BLINK_AND_TRAFFIC_LIGHTS.hex"
 arm-none-eabi-objcopy  -O binary  LED_BLINK_AND_TRAFFIC_LIGHTS.elf  "LED_BLINK_AND_TRAFFIC_LIGHTS.bin"
    text	   data	    bss	    dec	    hex	filename
-   5124	     96	   1576	   6796	   1a8c	LED_BLINK_AND_TRAFFIC_LIGHTS.elf
+   5360	     96	   1576	   7032	   1b78	LED_BLINK_AND_TRAFFIC_LIGHTS.elf
 Finished building: default.size.stdout
-Finished building: LED_BLINK_AND_TRAFFIC_LIGHTS.list
  
 Finished building: LED_BLINK_AND_TRAFFIC_LIGHTS.bin
- 
- 
 Finished building: LED_BLINK_AND_TRAFFIC_LIGHTS.hex
+Finished building: LED_BLINK_AND_TRAFFIC_LIGHTS.list
+ 
+ 
  
 
-11:45:10 Build Finished. 0 errors, 0 warnings. (took 2s.116ms)
+17:40:31 Build Finished. 0 errors, 0 warnings. (took 1s.943ms)
 

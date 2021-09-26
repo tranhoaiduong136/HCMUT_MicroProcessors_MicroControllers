@@ -84,15 +84,19 @@ void initLED(void){
 	HAL_GPIO_WritePin(GPIOA, YELLOW2, OFF);
 	HAL_GPIO_WritePin(GPIOA, GREEN2, OFF);
 }
-void trafficLIGHTDriver(int type_led,int idx,int count){
-	HAL_GPIO_WritePin(GPIOA, typeLED[type_led][idx], ON);
-	//7SEG counter
-	for(int i = count;i >= 0;i--){
-		updatesevenSegmentLEDBuffer(i,idx);
-		sevenSegementLEDDriver(idx);
-		HAL_Delay(LED_DELAY);
-	}
-	HAL_GPIO_WritePin(GPIOA, typeLED[type_led][idx], OFF);
+
+
+void trafficLIGHTDisplay(int idx,int val){
+	updatesevenSegmentLEDBuffer(val,idx);
+	sevenSegementLEDDriver(idx);
+}
+void trafficLIGHTStart(int led,int idx){
+	  HAL_GPIO_WritePin(GPIOA, typeLED[led][idx], ON);
+	  HAL_GPIO_WritePin(GPIOA, typeLED[led][idx], ON);
+}
+void trafficLIGHTChangeColor(int led,int idx){
+	HAL_GPIO_WritePin(GPIOA, typeLED[(led)%3][idx], OFF);
+	HAL_GPIO_WritePin(GPIOA, typeLED[(led+1)%3][idx], ON);
 }
 /* USER CODE END 0 */
 
@@ -130,18 +134,39 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
+  enum {RED,YELLOW,GREEN};
+  int color1 = RED;
+  int color2 = YELLOW;
+  int limit1 = counterBuffer[color1];
+  int limit2 = counterBuffer[color2];
+
   sevenSegmentLEDInit();
+  initLED();
+  trafficLIGHTStart(color1, 0);
+  trafficLIGHTStart(color2, 1);
   while (1)
   {
-	  initLED();
+
 	 /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-	  for(int i = 0; i < 3; i++){
-	  		trafficLIGHTDriver(i, 0,counterBuffer[i]);
-	  		//HAL_Delay(300);
-	  		trafficLIGHTDriver(i, 1,counterBuffer[i]);
-	  	  }
+	  trafficLIGHTDisplay(0,limit1);
+	  trafficLIGHTDisplay(1,limit2);
+	  HAL_Delay(LED_DELAY);
+	  --limit1;
+	  --limit2;
+	  if(limit1 == -1){
+		  trafficLIGHTChangeColor(color1,0);
+		  ++color1;
+		  limit1 = counterBuffer[color1 %3];
+
+	  }
+	  if(limit2 == -1){
+		  trafficLIGHTChangeColor(color2,1);
+		  ++color2;
+		  limit2 = counterBuffer[color2%3];
+
+	  }
   }
   /* USER CODE END 3 */
 }

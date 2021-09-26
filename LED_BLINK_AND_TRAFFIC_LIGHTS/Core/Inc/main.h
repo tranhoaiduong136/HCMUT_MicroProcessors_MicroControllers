@@ -55,7 +55,9 @@ void Error_Handler(void);
 
 /* USER CODE BEGIN EFP */
 void initLED(void);
-void trafficLIGHTDriver(int,int,int);
+void trafficLIGHTStart(int,int);
+void trafficLIGHTDisplay(int,int);
+void trafficLIGHTChangeColor(int,int);
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/
