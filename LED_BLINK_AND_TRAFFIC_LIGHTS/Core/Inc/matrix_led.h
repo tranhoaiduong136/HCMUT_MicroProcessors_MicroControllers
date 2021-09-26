@@ -10,6 +10,9 @@
 // Numbers of matrix led
 #define NUMS_MLED 1
 #define NUMS_LEDS 12
+static uint8_t seconds = 0;
+static uint8_t minutes = 0;
+static uint8_t hours = 0;
 // Define gate
 #define GROUP_PIN GPIOA
 #define COLS 5
@@ -34,8 +37,10 @@
 //Main functions
 uint8_t *typeFunc(int);
 void matrixLEDInit(void);
-void updatematrixLEDBuffer(int,int);
-void matrixLEDDriver(int);
+void updatematrixLEDBuffer(int,int,int);
+void displayMatrixLed(int);
+void clockInit(void);
+void matrixLEDDriver(void);
 
 void setNumberOnClock(int);
 void clearNumberOnClock(int);
