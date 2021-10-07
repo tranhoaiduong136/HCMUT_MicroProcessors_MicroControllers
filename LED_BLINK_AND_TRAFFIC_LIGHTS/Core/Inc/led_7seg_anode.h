@@ -9,6 +9,7 @@
 #define INC_LED_7SEG_ANODE_H_
 // Number of 7SEG
 #define NUMS_7SEGS 2
+#define GROUP_PIN GPIOB
 // Gate
 #define SEG0 GPIO_PIN_0
 #define SEG1 GPIO_PIN_1

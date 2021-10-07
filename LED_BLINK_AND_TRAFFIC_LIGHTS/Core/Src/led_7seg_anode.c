@@ -41,7 +41,7 @@ static uint8_t sevenSegmentLEDBuffer[NUMS_7SEGS];
 
 void sevenSegmentLEDInit(void){
 	for(int i = 0; i < 14;i++){
-	HAL_GPIO_WritePin(GPIOB, gate[i],SET);
+	HAL_GPIO_WritePin(GROUP_PIN, gate[i],SET);
 	}
 }
 
@@ -52,10 +52,10 @@ void sevenSegementLEDDriver(int idx){
 	uint8_t temp = sevenSegmentLEDConversionAnode[sevenSegmentLEDBuffer[idx]];
 	for(int i = 0; i < 7;i++){
 		if(temp & sevenSegmentbitConversion[i]){
-			HAL_GPIO_WritePin(GPIOB, gate[i + 7*idx], SET);
+			HAL_GPIO_WritePin(GROUP_PIN, gate[i + 7*idx], SET);
 		}
 		else{
-			HAL_GPIO_WritePin(GPIOB, gate[i + 7*idx], RESET);
+			HAL_GPIO_WritePin(GROUP_PIN, gate[i + 7*idx], RESET);
 		}
 
 	}
