@@ -55,6 +55,7 @@ void Error_Handler(void);
 
 /* USER CODE BEGIN EFP */
 void InitTimer(void);
+void update7SEG(int);
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/
