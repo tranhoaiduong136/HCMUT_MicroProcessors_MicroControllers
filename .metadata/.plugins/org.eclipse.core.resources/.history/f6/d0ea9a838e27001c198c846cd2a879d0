@@ -39,8 +39,6 @@
 #define EN3 GPIO_PIN_9
 #define NUMS 4
 #define DOT GPIO_PIN_4
-#define DOT_TIME 100
-#define LED_TIME 50
 static uint16_t ENA[NUMS] = {EN0,EN1,EN2,EN3};
 /* USER CODE END PD */
 
@@ -242,30 +240,27 @@ static void MX_GPIO_Init(void)
 }
 
 /* USER CODE BEGIN 4 */
-int dot_count = 0;
 int counter = 0;
 int val = -1; // Init
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim){
 		// 7Seg:
 		counter--;
-		dot_count--;
-
-		if(dot_count <= 0){
-			dot_count = DOT_TIME;
-			HAL_GPIO_TogglePin(GROUP_EN, DOT);
-		}
 		if(counter <= 0){
 		//SET
 		if(val >= 0){
-			HAL_GPIO_WritePin(GROUP_EN, ENA[val],SET);
+		HAL_GPIO_WritePin(GROUP_EN, ENA[val],SET);
 		}else{
-			HAL_GPIO_WritePin(GROUP_EN,ENA[NUMS-1],SET);
+		HAL_GPIO_WritePin(GROUP_EN,ENA[NUMS-1],SET);
 		}
 
 		val = (val+1) % NUMS;
-		counter = LED_TIME; // 500ms
+		counter = 50; // 500ms
 
 		HAL_GPIO_WritePin(GROUP_EN, ENA[val],RESET);
+		//Change state led every 1s
+		if(val % 2 != 0){
+		HAL_GPIO_TogglePin(GPIOA, GPIO_PIN_5);
+		}
 		if(val == 3){
 			val = -1;
 		}

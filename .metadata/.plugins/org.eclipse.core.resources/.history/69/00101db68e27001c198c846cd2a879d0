@@ -249,17 +249,12 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim){
 		// 7Seg:
 		counter--;
 		dot_count--;
-
-		if(dot_count <= 0){
-			dot_count = DOT_TIME;
-			HAL_GPIO_TogglePin(GROUP_EN, DOT);
-		}
 		if(counter <= 0){
 		//SET
 		if(val >= 0){
-			HAL_GPIO_WritePin(GROUP_EN, ENA[val],SET);
+		HAL_GPIO_WritePin(GROUP_EN, ENA[val],SET);
 		}else{
-			HAL_GPIO_WritePin(GROUP_EN,ENA[NUMS-1],SET);
+		HAL_GPIO_WritePin(GROUP_EN,ENA[NUMS-1],SET);
 		}
 
 		val = (val+1) % NUMS;
