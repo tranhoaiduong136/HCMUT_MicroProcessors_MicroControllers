@@ -1,0 +1,33 @@
+/*
+ * Timer_Interrupt.c
+ *
+ *  Created on: Oct 8, 2021
+ *      Author: Duong
+ */
+#include "main.h"
+#include "Timer_Interrupt.h"
+
+int timer0_counter = 0;
+int timer0_flag = 0;
+
+void setTimer0(int duration){
+	timer0_counter = duration / TIMER_CYCLE;
+	timer0_flag = 0;
+}
+void timerDELAY_run(void){
+	if(timer0_counter > 0){
+		timer0_counter--;
+		if(timer0_counter == 0){
+			//Change state led every led change
+			HAL_GPIO_TogglePin(GPIOA, GPIO_PIN_5);
+			setTimer0(DELAY_TIME);
+		}
+	}
+}
+
+void setTimerDot(int){
+
+}
+void timerDot_run(void){
+
+}

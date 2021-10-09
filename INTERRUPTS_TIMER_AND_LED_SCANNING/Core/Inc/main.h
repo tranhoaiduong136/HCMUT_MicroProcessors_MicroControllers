@@ -29,7 +29,7 @@ extern "C" {
 
 /* Includes ------------------------------------------------------------------*/
 #include "stm32f1xx_hal.h"
-
+#include <stdio.h>
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 
@@ -55,7 +55,9 @@ void Error_Handler(void);
 
 /* USER CODE BEGIN EFP */
 void InitTimer(void);
+void updateClockBuffer(int,int);
 void update7SEG(int);
+void presentCLOCK(void);
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/

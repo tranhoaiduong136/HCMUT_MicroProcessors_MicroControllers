@@ -23,6 +23,7 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "led_7seg_anode.h"
+#include "Timer_Interrupt.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -38,10 +39,9 @@
 #define EN2 GPIO_PIN_8
 #define EN3 GPIO_PIN_9
 #define NUMS 4 // Max led
-#define DOT GPIO_PIN_4
-#define DOT_TIME 20
-#define LED_TIME 10
+
 static uint16_t ENA[NUMS] = {EN0,EN1,EN2,EN3};
+static int led_buffer[4] = {0,0,0,0};
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -71,6 +71,14 @@ void InitTimer(void){
 		HAL_GPIO_WritePin(GROUP_EN,ENA[i], SET);
 	}
 }
+ void updateClockBuffer(int h,int m){
+	 // Hour
+		 led_buffer[0] = h /10;
+		 led_buffer[1] = h % 10;
+	 // Minute
+		 led_buffer[2] = m /10;
+	 	 led_buffer[3] = m % 10;
+ }
 /* USER CODE END 0 */
 
 /**
@@ -110,11 +118,32 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
+  int hour = 16,minute = 9,second = 50;
   while (1)
   {
-    /* USER CODE END WHILE */
+	  if(getDelayCounter() <= 0){
+		  second ++;
+		  if (second >= 60) {
+			  second = 0;
+		  	  ++minute;
+		  }
+		  if(minute >= 60){
+			  minute = 0;
+			  ++hour;
+		  }
+		  if(hour >= 24){
+			  hour = 0;
+		  }
+		  updateClockBuffer(hour,minute);
+		  //Change state led every led change
+		  HAL_GPIO_TogglePin(GROUP_EN, GPIO_PIN_5);
+		  startDelay();
+	  }
+//	  HAL_Delay(DELAY_TIME/TIMER_CYCLE);
 
-    /* USER CODE BEGIN 3 */
+
+	  /* USER CODE END WHILE */
+	 /* USER CODE BEGIN 3 */
   }
   /* USER CODE END 3 */
 }
@@ -242,38 +271,46 @@ static void MX_GPIO_Init(void)
 }
 
 /* USER CODE BEGIN 4 */
-int dot_count = 0;
-int counter = 0;
+
+int dot_counter = 0;
+int led_counter = 0;
+
 int val = -1; // Init
-int led_buffer[4] = {1,2,3,4};
+void clear7SEG(int index){
+	// Turn off the previous:
+	if(index >= 0){
+		HAL_GPIO_WritePin(GROUP_EN, ENA[index],SET);
+	}
+}
 void update7SEG(int index){
 	HAL_GPIO_WritePin(GROUP_EN, ENA[index],RESET);
 	updatesevenSegmentLEDBuffer(led_buffer[index],0);
 	sevenSegementLEDDriver(0);
-	//Change state led every led change
-	HAL_GPIO_TogglePin(GPIOA, GPIO_PIN_5);
+}
+int updateIndex(int index){
+	// Update the index
+	return (index + 1) % NUMS;
+}
+void presentCLOCK(void){
+	//Dot
+	dot_counter = timerDot_run(dot_counter);
+	//Led
+	led_counter = timerLED_run(led_counter);
+	//flag
+	if(getChangeStateLED() == 1){
+		clear7SEG(val);
+		val = updateIndex(val);
+		update7SEG(val);
+	}
 }
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim){
-		// 7Seg:
-		counter--;
-		dot_count--;
+		//Delay
+		timerDELAY_run();
 
-		if(dot_count <= 0){
-			dot_count = DOT_TIME;
-			HAL_GPIO_TogglePin(GROUP_EN, DOT);
-		}
+//		if(getDelayState() == 0){
+		presentCLOCK();
+//		}
 
-		if(counter <= 0){
-		//SET
-		if(val >= 0){
-			HAL_GPIO_WritePin(GROUP_EN, ENA[val],SET);
-		}else{
-			HAL_GPIO_WritePin(GROUP_EN,ENA[NUMS-1],SET);
-		}
-		val = (val+1) % NUMS;
-		counter = LED_TIME; // 500ms
-		update7SEG(val);
-		}
 }
 /* USER CODE END 4 */
 

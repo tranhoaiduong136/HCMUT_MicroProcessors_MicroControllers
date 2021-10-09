@@ -1,0 +1,18 @@
+/*
+ * Timer_Interrupt.h
+ *
+ *  Created on: Oct 8, 2021
+ *      Author: Duong
+ */
+
+#ifndef INC_TIMER_INTERRUPT_H_
+#define INC_TIMER_INTERRUPT_H_
+
+#define DOT GPIO_PIN_4
+#define DOT_TIME 20
+#define LED_TIME 10
+#define DELAY_TIME 100
+
+
+
+#endif /* INC_TIMER_INTERRUPT_H_ */

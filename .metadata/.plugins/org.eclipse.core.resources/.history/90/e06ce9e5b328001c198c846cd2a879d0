@@ -1,0 +1,28 @@
+/*
+ * Timer_Interrupt.h
+ *
+ *  Created on: Oct 8, 2021
+ *      Author: Duong
+ */
+
+#ifndef INC_TIMER_INTERRUPT_H_
+#define INC_TIMER_INTERRUPT_H_
+
+#define DOT GPIO_PIN_4
+#define DOT_TIME 200
+#define LED_TIME 100
+#define DELAY_TIME 100
+#define TIMER_CYCLE 10  // 10ms callback 1 times
+
+
+// Delay time
+void setTimer0(int&);
+void timerDELAY_run(int&);
+//DOT time
+void setTimerDot(int);
+void timerDot_run(int&);
+//LED_7SEG time
+void setTimerLED(int&);
+void timerLED_run(int&);
+
+#endif /* INC_TIMER_INTERRUPT_H_ */
