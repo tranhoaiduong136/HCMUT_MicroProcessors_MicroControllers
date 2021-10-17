@@ -1,0 +1,5 @@
+matrix_led.c:23:6:matrixLEDInit	16	static
+matrix_led.c:37:6:matrixLEDDisplay	16	static
+matrix_led.c:47:6:startMatrixLedCOL	24	static
+matrix_led.c:58:6:clearMatrixLedCOL	24	static
+matrix_led.c:66:6:shiftingLEDDisplay	16	static

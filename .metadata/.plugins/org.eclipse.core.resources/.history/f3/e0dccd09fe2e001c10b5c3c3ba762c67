@@ -1,0 +1,36 @@
+/*
+ * matrix_led.c
+ *
+ *  Created on: Oct 17, 2021
+ *      Author: Duong
+ */
+
+#include "main.h"
+#include "matrix_led.h"
+
+static uint16_t ROWS[ROWS]={
+		GPIO_PIN_8,GPIO_PIN_9,GPIO_PIN_10,GPIO_PIN_11,GPIO_PIN_12,GPIO_PIN_13,GPIO_PIN_14,GPIO_PIN_15
+};
+static uint16_t ENA[COLS]={
+		GPIO_PIN_2,GPIO_PIN_3,GPIO_PIN_10,GPIO_PIN_11,GPIO_PIN_12,GPIO_PIN_13,GPIO_PIN_14,GPIO_PIN_15
+};
+static wordConversion[8] = {
+
+};
+void matrixLEDInit(void){
+	//initial state
+	int max = ROWS > COLS? ROWS : COLS;
+	for(int i = 0;i < max;i++ ){
+	if(i < ROWS){
+		HAL_GPIO_WritePin(ROW_GROUP, ROWS[i], OFF);
+		}
+	if(i < COLS){
+		HAL_GPIO_WritePin(EN_GROUP,	ENA[i], OFF);
+		}
+	}
+}
+
+
+
+
+

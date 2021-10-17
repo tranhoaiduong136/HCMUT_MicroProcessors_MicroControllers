@@ -8,6 +8,7 @@ C_SRCS += \
 ../Core/Src/Timer_Interrupt.c \
 ../Core/Src/led_7seg_anode.c \
 ../Core/Src/main.c \
+../Core/Src/matrix_led.c \
 ../Core/Src/stm32f1xx_hal_msp.c \
 ../Core/Src/stm32f1xx_it.c \
 ../Core/Src/syscalls.c \
@@ -18,6 +19,7 @@ OBJS += \
 ./Core/Src/Timer_Interrupt.o \
 ./Core/Src/led_7seg_anode.o \
 ./Core/Src/main.o \
+./Core/Src/matrix_led.o \
 ./Core/Src/stm32f1xx_hal_msp.o \
 ./Core/Src/stm32f1xx_it.o \
 ./Core/Src/syscalls.o \
@@ -28,6 +30,7 @@ C_DEPS += \
 ./Core/Src/Timer_Interrupt.d \
 ./Core/Src/led_7seg_anode.d \
 ./Core/Src/main.d \
+./Core/Src/matrix_led.d \
 ./Core/Src/stm32f1xx_hal_msp.d \
 ./Core/Src/stm32f1xx_it.d \
 ./Core/Src/syscalls.d \

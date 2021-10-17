@@ -12,6 +12,7 @@
 #define DOT_TIME 400
 #define LED_TIME 200
 #define DELAY_TIME 200
+#define WORD_TIME 200
 #define TIMER_CYCLE 10  // 10ms callback 1 times
 
 
@@ -22,11 +23,13 @@ int getDelayCounter(void);
 void timerDELAY_run(void);
 
 //DOT time
-int setTimerDot();
+int setTimerDot(void);
 int timerDot_run(int);
 //LED_7SEG time
-int getChangeStateLED();
-int setTimerLED();
+int getChangeStateLED(void);
+int setTimerLED(void);
 int timerLED_run(int);
 
+//Word shift:
+int timerWord_run(int);
 #endif /* INC_TIMER_INTERRUPT_H_ */

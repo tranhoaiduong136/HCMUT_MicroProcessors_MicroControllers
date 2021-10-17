@@ -58,3 +58,7 @@ int timerLED_run(int led_counter){
 	return led_counter;
 }
 
+int timerWord_run(int word_counter){
+	return word_counter <= 0? WORD_TIME/TIMER_CYCLE : (--word_counter);
+}
+

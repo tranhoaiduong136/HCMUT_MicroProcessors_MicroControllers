@@ -1,0 +1,18 @@
+/*
+ * matrix_led.h
+ *
+ *  Created on: Oct 17, 2021
+ *      Author: Duong
+ */
+
+#ifndef INC_MATRIX_LED_H_
+#define INC_MATRIX_LED_H_
+
+#define EN_GROUP GPIOA
+#define ROW_GROUP GPIOB
+#define ROWS 8
+#define COLS 8
+
+
+
+#endif /* INC_MATRIX_LED_H_ */

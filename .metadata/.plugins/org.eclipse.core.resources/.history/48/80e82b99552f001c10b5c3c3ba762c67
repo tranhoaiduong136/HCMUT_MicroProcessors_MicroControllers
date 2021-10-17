@@ -1,0 +1,62 @@
+/*
+ * matrix_led.c
+ *
+ *  Created on: Oct 17, 2021
+ *      Author: Duong
+ */
+
+#include "main.h"
+#include "matrix_led.h"
+
+static uint16_t ROW[ROWS]={
+		GPIO_PIN_8,GPIO_PIN_9,GPIO_PIN_10,GPIO_PIN_11,GPIO_PIN_12,GPIO_PIN_13,GPIO_PIN_14,GPIO_PIN_15
+};
+static uint16_t COL[COLS]={
+		GPIO_PIN_2,GPIO_PIN_3,GPIO_PIN_10,GPIO_PIN_11,GPIO_PIN_12,GPIO_PIN_13,GPIO_PIN_14,GPIO_PIN_15
+};
+static uint8_t wordAConversion[8] = {
+		0x00,0x3F,0x7F,0xCC,0xCC,0x7F,0x3F,0x00
+};
+static uint8_t rowConversion[8] = {
+		0x01,0x02,0x04,0x08,0x10,0x20,0x40,0x80
+};
+void matrixLEDInit(void){
+	//initial state
+	int max = ROWS > COLS? ROWS : COLS;
+	for(int i = 0;i < max;i++ ){
+		if(i < ROWS){
+			HAL_GPIO_WritePin(ROW_GROUP, ROW[i], OFF);
+		}
+		if(i < COLS){
+			HAL_GPIO_WritePin(COL_GROUP,COL[i], OFF);
+		}
+	}
+}
+
+void matrixLEDDisplay(void){
+	for(int i = 0;i < COLS;i++){
+		HAL_GPIO_WritePin(COL_GROUP,COL[i],ON);
+		for(int j = 0;j < ROWS;j++){
+			uint8_t temp = wordAConversion[j];
+			if(temp & rowConversion[j]){
+				HAL_GPIO_WritePin(ROW_GROUP,ROW[j],ON);
+			}
+		}
+		HAL_GPIO_WritePin(COL_GROUP,COL[i],OFF);
+	}
+}
+void startMatrixLedCOL(int col){
+
+}
+void clearMatrixLED(int col){
+
+}
+void shiftingLEDDisplay(void){
+	uint8_t temp = wordAConversion[0];
+	for(int i = 0; i < COLS-1;i++){
+		wordAConversion[i] = wordAConversion[i+1];
+	}
+	wordAConversion[COLS-1] = temp;
+}
+
+

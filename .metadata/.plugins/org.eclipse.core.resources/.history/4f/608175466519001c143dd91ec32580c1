@@ -1,9 +1,0 @@
-/*
- * led_7seg_anode.c
- *
- *  Created on: Sep 19, 2021
- *      Author: Duong
- */
-#include "main.h"
-#include "led_7seg_anode.h"
-

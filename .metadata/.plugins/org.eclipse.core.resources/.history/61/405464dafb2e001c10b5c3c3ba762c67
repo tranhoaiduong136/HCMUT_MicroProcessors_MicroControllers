@@ -1,0 +1,17 @@
+/*
+ * matrix_led.c
+ *
+ *  Created on: Oct 17, 2021
+ *      Author: Duong
+ */
+
+static uint16_t ROWS[8]={};
+static uint16_t COLS[8]={};
+static uint16_t ENA[8]={};
+static wordConversion[] = {};
+
+
+
+
+
+
