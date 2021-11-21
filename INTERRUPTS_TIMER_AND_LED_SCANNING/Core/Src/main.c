@@ -24,7 +24,9 @@
 /* USER CODE BEGIN Includes */
 #include "led_7seg_anode.h"
 #include "Timer_Interrupt.h"
-#include "matrix_led.h"
+#include"input_processing.h"
+#include"input_reading.h"
+#include"traffic_led.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -35,10 +37,10 @@
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
 #define GROUP_EN GPIOA
-#define EN0 GPIO_PIN_6
-#define EN1 GPIO_PIN_7
-#define EN2 GPIO_PIN_8
-#define EN3 GPIO_PIN_9
+#define EN0 GPIO_PIN_12
+#define EN1 GPIO_PIN_13
+#define EN2 GPIO_PIN_14
+#define EN3 GPIO_PIN_15
 #define NUMS 4 // Max led
 
 static uint16_t ENA[NUMS] = {EN0,EN1,EN2,EN3};
@@ -79,7 +81,7 @@ void InitTimer(void){
 	 // Minute
 		 led_buffer[2] = m /10;
 	 	 led_buffer[3] = m % 10;
- }
+}
 /* USER CODE END 0 */
 
 /**
@@ -113,43 +115,17 @@ int main(void)
   MX_TIM2_Init();
   /* USER CODE BEGIN 2 */
   InitTimer();
-  matrixLEDInit();
   HAL_TIM_Base_Start_IT(&htim2);
-
+  initStatus();
+  initLED();
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-  int hour = 16,minute = 9,second = 50;
   while (1)
   {
-	  //Ex6-8:
-	  if(getDelayCounter() <= 0){
-		  second ++;
-		  if (second >= 60) {
-			  second = 0;
-		  	  ++minute;
-		  }
-		  if(minute >= 60){
-			  minute = 0;
-			  ++hour;
-		  }
-		  if(hour >= 24){
-			  hour = 0;
-		  }
-		  updateClockBuffer(hour,minute);
-		  //Change state led every led change
-		  HAL_GPIO_TogglePin(GROUP_EN, GPIO_PIN_5);
-		  startDelay();
-	  }
-	  //Ex5:
-	  //HAL_Delay(DELAY_TIME/TIMER_CYCLE);
-
-	  //Ex9:
-	  matrixLEDDisplay();
-	  //Example();
-
-    /* USER CODE END WHILE */
+	  fsm_for_input_processing();
+	  /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
   }
@@ -255,16 +231,13 @@ static void MX_GPIO_Init(void)
   HAL_GPIO_WritePin(GPIOC, GPIO_PIN_13|GPIO_PIN_14|GPIO_PIN_15, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_2|GPIO_PIN_3|GPIO_PIN_4|GPIO_PIN_5
-                          |GPIO_PIN_6|GPIO_PIN_7|GPIO_PIN_8|GPIO_PIN_9
-                          |GPIO_PIN_10|GPIO_PIN_11|GPIO_PIN_12|GPIO_PIN_13
+  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_1|GPIO_PIN_2|GPIO_PIN_3|GPIO_PIN_4
+                          |GPIO_PIN_5|GPIO_PIN_6|GPIO_PIN_12|GPIO_PIN_13
                           |GPIO_PIN_14|GPIO_PIN_15, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_0|GPIO_PIN_1|GPIO_PIN_2|GPIO_PIN_10
-                          |GPIO_PIN_11|GPIO_PIN_12|GPIO_PIN_13|GPIO_PIN_14
-                          |GPIO_PIN_15|GPIO_PIN_3|GPIO_PIN_4|GPIO_PIN_5
-                          |GPIO_PIN_6|GPIO_PIN_8|GPIO_PIN_9, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_0|GPIO_PIN_1|GPIO_PIN_2|GPIO_PIN_12
+                          |GPIO_PIN_3|GPIO_PIN_4|GPIO_PIN_5|GPIO_PIN_6, GPIO_PIN_RESET);
 
   /*Configure GPIO pins : PC13 PC14 PC15 */
   GPIO_InitStruct.Pin = GPIO_PIN_13|GPIO_PIN_14|GPIO_PIN_15;
@@ -273,27 +246,27 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
 
-  /*Configure GPIO pins : PA2 PA3 PA4 PA5
-                           PA6 PA7 PA8 PA9
-                           PA10 PA11 PA12 PA13
+  /*Configure GPIO pins : PA1 PA2 PA3 PA4
+                           PA5 PA6 PA12 PA13
                            PA14 PA15 */
-  GPIO_InitStruct.Pin = GPIO_PIN_2|GPIO_PIN_3|GPIO_PIN_4|GPIO_PIN_5
-                          |GPIO_PIN_6|GPIO_PIN_7|GPIO_PIN_8|GPIO_PIN_9
-                          |GPIO_PIN_10|GPIO_PIN_11|GPIO_PIN_12|GPIO_PIN_13
+  GPIO_InitStruct.Pin = GPIO_PIN_1|GPIO_PIN_2|GPIO_PIN_3|GPIO_PIN_4
+                          |GPIO_PIN_5|GPIO_PIN_6|GPIO_PIN_12|GPIO_PIN_13
                           |GPIO_PIN_14|GPIO_PIN_15;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
-  /*Configure GPIO pins : PB0 PB1 PB2 PB10
-                           PB11 PB12 PB13 PB14
-                           PB15 PB3 PB4 PB5
-                           PB6 PB8 PB9 */
-  GPIO_InitStruct.Pin = GPIO_PIN_0|GPIO_PIN_1|GPIO_PIN_2|GPIO_PIN_10
-                          |GPIO_PIN_11|GPIO_PIN_12|GPIO_PIN_13|GPIO_PIN_14
-                          |GPIO_PIN_15|GPIO_PIN_3|GPIO_PIN_4|GPIO_PIN_5
-                          |GPIO_PIN_6|GPIO_PIN_8|GPIO_PIN_9;
+  /*Configure GPIO pins : PA7 PA8 PA9 PA10 */
+  GPIO_InitStruct.Pin = GPIO_PIN_7|GPIO_PIN_8|GPIO_PIN_9|GPIO_PIN_10;
+  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+
+  /*Configure GPIO pins : PB0 PB1 PB2 PB12
+                           PB3 PB4 PB5 PB6 */
+  GPIO_InitStruct.Pin = GPIO_PIN_0|GPIO_PIN_1|GPIO_PIN_2|GPIO_PIN_12
+                          |GPIO_PIN_3|GPIO_PIN_4|GPIO_PIN_5|GPIO_PIN_6;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
@@ -303,10 +276,9 @@ static void MX_GPIO_Init(void)
 
 /* USER CODE BEGIN 4 */
 
-int dot_counter = 0;
 int led_counter = 0;
 int word_counter = 0;
-
+int blink_counter = 0;
 int val = -1; // Init
 void clear7SEG(int index){
 	// Turn off the previous:
@@ -324,27 +296,26 @@ int updateIndex(int index){
 	return (index + 1) % NUMS;
 }
 void presentCLOCK(void){
-	//Dot
-	dot_counter = timerDot_run(dot_counter);
 	//Led
 	led_counter = timerLED_run(led_counter);
 	//flag
 	if(getChangeStateLED() == 1){
+		HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_12);
 		clear7SEG(val);
 		val = updateIndex(val);
 		update7SEG(val);
 	}
 }
-void presentWORD(void){
-	word_counter = timerWord_run(word_counter);
-	if(word_counter <= 0){
-		shiftingLEDDisplay();
-	}
-}
+
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim){
-		//Word shift
-		presentWORD();
 		//Delay
+		if(getModeValue() > 0) {
+			blink_counter = timer_Blinkrun(blink_counter);
+			if(blink_counter <=0){
+				blinkLED2Hz(getModeValue());
+			}
+		}
+		button_reading();
 		timerDELAY_run();
 		presentCLOCK();
 }

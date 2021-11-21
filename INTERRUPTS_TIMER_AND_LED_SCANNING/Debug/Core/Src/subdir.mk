@@ -6,6 +6,8 @@
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS += \
 ../Core/Src/Timer_Interrupt.c \
+../Core/Src/input_processing.c \
+../Core/Src/input_reading.c \
 ../Core/Src/led_7seg_anode.c \
 ../Core/Src/main.c \
 ../Core/Src/matrix_led.c \
@@ -13,10 +15,13 @@ C_SRCS += \
 ../Core/Src/stm32f1xx_it.c \
 ../Core/Src/syscalls.c \
 ../Core/Src/sysmem.c \
-../Core/Src/system_stm32f1xx.c 
+../Core/Src/system_stm32f1xx.c \
+../Core/Src/traffic_led.c 
 
 OBJS += \
 ./Core/Src/Timer_Interrupt.o \
+./Core/Src/input_processing.o \
+./Core/Src/input_reading.o \
 ./Core/Src/led_7seg_anode.o \
 ./Core/Src/main.o \
 ./Core/Src/matrix_led.o \
@@ -24,10 +29,13 @@ OBJS += \
 ./Core/Src/stm32f1xx_it.o \
 ./Core/Src/syscalls.o \
 ./Core/Src/sysmem.o \
-./Core/Src/system_stm32f1xx.o 
+./Core/Src/system_stm32f1xx.o \
+./Core/Src/traffic_led.o 
 
 C_DEPS += \
 ./Core/Src/Timer_Interrupt.d \
+./Core/Src/input_processing.d \
+./Core/Src/input_reading.d \
 ./Core/Src/led_7seg_anode.d \
 ./Core/Src/main.d \
 ./Core/Src/matrix_led.d \
@@ -35,7 +43,8 @@ C_DEPS += \
 ./Core/Src/stm32f1xx_it.d \
 ./Core/Src/syscalls.d \
 ./Core/Src/sysmem.d \
-./Core/Src/system_stm32f1xx.d 
+./Core/Src/system_stm32f1xx.d \
+./Core/Src/traffic_led.d 
 
 
 # Each subdirectory must supply rules for building sources it contributes

@@ -1,0 +1,23 @@
+/*
+ * input_processing.h
+ *
+ *  Created on: Oct 18, 2021
+ *      Author: Duong
+ */
+
+#ifndef INC_INPUT_PROCESSING_H_
+#define INC_INPUT_PROCESSING_H_
+
+#define NUMS_MODE 4
+
+void fsm_for_input1_processing(void);
+void fsm_for_input2_processing(void);
+void fsm_for_input3_processing(void);
+
+int getModevalue(void);
+int getCurrentStatus(int);
+void initStatus(void);
+
+int getSetflag(void);
+void setSetflag(int);
+#endif /* INC_INPUT_PROCESSING_H_ */

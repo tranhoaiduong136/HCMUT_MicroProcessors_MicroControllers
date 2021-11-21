@@ -17,11 +17,11 @@
 
 
 // Delay time
-void startDelay(void);
+void startDelay(int time);
 int getDelayState(void);
 int getDelayCounter(void);
 void timerDELAY_run(void);
-
+void stopDelay(void);
 //DOT time
 int setTimerDot(void);
 int timerDot_run(int);
@@ -30,6 +30,5 @@ int getChangeStateLED(void);
 int setTimerLED(void);
 int timerLED_run(int);
 
-//Word shift:
-int timerWord_run(int);
+int timer_Blinkrun(int time);
 #endif /* INC_TIMER_INTERRUPT_H_ */

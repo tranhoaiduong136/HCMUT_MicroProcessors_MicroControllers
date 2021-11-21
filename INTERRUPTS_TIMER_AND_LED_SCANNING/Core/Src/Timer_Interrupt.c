@@ -12,9 +12,9 @@ int stateflag = 0;
 int timer0_flag = 0;
 int timer0_counter = 0;
 
-void startDelay(void){
+void startDelay(int time){
 	timer0_flag = 1;
-	timer0_counter = DELAY_TIME/TIMER_CYCLE;
+	timer0_counter = time/TIMER_CYCLE;
 }
 int getDelayCounter(void){
 	return timer0_counter;
@@ -24,11 +24,14 @@ int getDelayState(void){
 }
 void timerDELAY_run(void){
 	timer0_counter--;
-	if(timer0_counter <= 0){
+	if(timer0_counter < 0){
 		timer0_flag = 0;
 	}
 }
-
+void stopDelay(void){
+	timer0_flag = 0;
+	timer0_counter = 0;
+}
 int setTimerDot(void){
 	return DOT_TIME / TIMER_CYCLE;
 }
@@ -58,7 +61,6 @@ int timerLED_run(int led_counter){
 	return led_counter;
 }
 
-int timerWord_run(int word_counter){
-	return word_counter <= 0? WORD_TIME/TIMER_CYCLE : (--word_counter);
+int timer_Blinkrun(int time){
+	return time < 0? 20/TIMER_CYCLE:--time;
 }
-

@@ -1,0 +1,15 @@
+main.c:73:6:InitTimer	16	static
+main.c:78:6:updateClockBuffer	16	static
+main.c:87:6:startdelay	4	static
+main.c:90:6:fsm_model	24	static
+main.c:119:5:main	8	static
+main.c:175:6:SystemClock_Config	72	static
+main.c:211:13:MX_TIM2_Init	32	static
+main.c:256:13:MX_GPIO_Init	40	static
+main.c:310:6:clear7SEG	16	static
+main.c:316:6:update7SEG	16	static
+main.c:321:5:updateIndex	16	static
+main.c:325:6:delayTimer	8	static
+main.c:332:6:presentCLOCK	8	static
+main.c:343:6:HAL_TIM_PeriodElapsedCallback	16	static
+main.c:360:6:Error_Handler	4	static,ignoring_inline_asm

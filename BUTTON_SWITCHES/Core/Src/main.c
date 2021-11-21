@@ -22,7 +22,10 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include "3Color_led.h"
+#include "7SEG_LED.h"
+#include "Timer_interrupt.h"
+#include "input_processing.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -32,10 +35,17 @@
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
-#define PIN_PORT GPIOA
-#define btnA GPIO_PIN_1
-#define btnB GPIO_PIN_2
-#define LED GPIO_PIN_3
+#define GROUP_EN GPIOA
+#define EN0 GPIO_PIN_12
+#define EN1 GPIO_PIN_13
+#define EN2 GPIO_PIN_14
+#define EN3 GPIO_PIN_15
+#define NUMS 4 // Max led
+
+static uint16_t ENA[NUMS] = {EN0,EN1,EN2,EN3};
+static int led_buffer[4] = {0,0,0,0};
+int led_counter = 0;
+int delay_counter = 0;
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -60,21 +70,45 @@ static void MX_TIM2_Init(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-void button_reading (uint16_t BUTTON) {
-	static unsigned char last_button ;
-	unsigned char raw_button ;
-	unsigned char filtered_button ;
-	last_button = raw_button ;
-	raw_button = HAL_GPIO_ReadPin(PIN_PORT,BUTTON) ;
-	if( last_button == raw_button ) {
-		filtered_button = raw_button ;
- 	 }
+void InitTimer(void){
+	for(int i = 0; i < NUMS;i++){
+		HAL_GPIO_WritePin(GROUP_EN,ENA[i], SET);
+	}
 }
-int buttonPressA = 0;
-int buttonPressB = 0;
-
-void debouncebyROBIN(int ){
-
+void updateClockBuffer(int h,int m){
+	 // Hour
+		 led_buffer[0] = h /10;
+		 led_buffer[1] = h % 10;
+	 // Minute
+		 led_buffer[2] = m /10;
+	 	 led_buffer[3] = m % 10;
+}
+int flag_delay = 0;
+void startdelay(){
+	flag_delay = 1;
+}
+void fsm_model(int mode){
+	switch(mode){
+		case 0:
+			if(delay_counter <= 0){
+				countLEDBuffer();
+				updateClockBuffer(getLimit1Value(), getLimit2Value());
+				startdelay();
+			}
+			break;
+		case 1:
+			initLED();
+			updateClockBuffer(1,getCurrentStatus(1));
+			break;
+		case 2:
+			initLED();
+			updateClockBuffer(2,getCurrentStatus(2));
+			break;
+		case 3:
+			initLED();
+			updateClockBuffer(3,getCurrentStatus(3));
+			break;
+	}
 }
 /* USER CODE END 0 */
 
@@ -108,16 +142,28 @@ int main(void)
   MX_GPIO_Init();
   MX_TIM2_Init();
   /* USER CODE BEGIN 2 */
+  	InitTimer();
 
+   sevenSegmentLEDInit();
+   initLED();
+   // start for led
+   trafficLIGHTStart(0,0);
+   trafficLIGHTStart(1,1);
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
   {
+
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
+//	  for(int i = 0; i < N0_OF_BUTTONS;i++){
+//		  fsm_for_input_processing(i);
+//		 }
+//	  controlButton();
+//	  fsm_model(0);
   }
   /* USER CODE END 3 */
 }
@@ -176,9 +222,9 @@ static void MX_TIM2_Init(void)
 
   /* USER CODE END TIM2_Init 1 */
   htim2.Instance = TIM2;
-  htim2.Init.Prescaler = 0;
+  htim2.Init.Prescaler = 8000-1;
   htim2.Init.CounterMode = TIM_COUNTERMODE_UP;
-  htim2.Init.Period = 65535;
+  htim2.Init.Period = 10-1;
   htim2.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
   htim2.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
   if (HAL_TIM_Base_Init(&htim2) != HAL_OK)
@@ -214,27 +260,97 @@ static void MX_GPIO_Init(void)
   /* GPIO Ports Clock Enable */
   __HAL_RCC_GPIOD_CLK_ENABLE();
   __HAL_RCC_GPIOA_CLK_ENABLE();
+  __HAL_RCC_GPIOB_CLK_ENABLE();
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_1|GPIO_PIN_2|GPIO_PIN_3, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_0|GPIO_PIN_1|GPIO_PIN_2|GPIO_PIN_3
+                          |GPIO_PIN_4|GPIO_PIN_5|GPIO_PIN_6|GPIO_PIN_12
+                          |GPIO_PIN_13|GPIO_PIN_14|GPIO_PIN_15, GPIO_PIN_RESET);
 
-  /*Configure GPIO pins : PA1 PA2 PA3 */
-  GPIO_InitStruct.Pin = GPIO_PIN_1|GPIO_PIN_2|GPIO_PIN_3;
+  /*Configure GPIO pin Output Level */
+  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_1|GPIO_PIN_2|GPIO_PIN_12|GPIO_PIN_3
+                          |GPIO_PIN_4|GPIO_PIN_5|GPIO_PIN_6, GPIO_PIN_RESET);
+
+  /*Configure GPIO pins : PA0 PA1 PA2 PA3
+                           PA4 PA5 PA6 PA12
+                           PA13 PA14 PA15 */
+  GPIO_InitStruct.Pin = GPIO_PIN_0|GPIO_PIN_1|GPIO_PIN_2|GPIO_PIN_3
+                          |GPIO_PIN_4|GPIO_PIN_5|GPIO_PIN_6|GPIO_PIN_12
+                          |GPIO_PIN_13|GPIO_PIN_14|GPIO_PIN_15;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
+  /*Configure GPIO pins : PA7 PA8 PA9 */
+  GPIO_InitStruct.Pin = GPIO_PIN_7|GPIO_PIN_8|GPIO_PIN_9;
+  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+
+  /*Configure GPIO pin : PB0 */
+  GPIO_InitStruct.Pin = GPIO_PIN_0;
+  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+
+  /*Configure GPIO pins : PB1 PB2 PB12 PB3
+                           PB4 PB5 PB6 */
+  GPIO_InitStruct.Pin = GPIO_PIN_1|GPIO_PIN_2|GPIO_PIN_12|GPIO_PIN_3
+                          |GPIO_PIN_4|GPIO_PIN_5|GPIO_PIN_6;
+  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+  HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+
 }
 
 /* USER CODE BEGIN 4 */
-void LEDBlinkbyDELAY(void){
-   	HAL_GPIO_TogglePin(PIN_PORT, LED);
-	HAL_Delay(500);
+int val = -1; // Init
+void clear7SEG(int index){
+	// Turn off the previous:
+	if(index >= 0){
+		HAL_GPIO_WritePin(GROUP_EN, ENA[index],SET);
+	}
 }
-void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim){
+void update7SEG(int index){
+	HAL_GPIO_WritePin(GROUP_EN, ENA[index],RESET);
+	updatesevenSegmentLEDBuffer(led_buffer[index],0);
+	sevenSegementLEDDriver(0);
+}
+int updateIndex(int index){
+	// Update the index
+	return (index + 1) % NUMS;
+}
+void delayTimer(void){
+	delay_counter = timer_run(delay_counter,DELAY);
+	if(delay_counter <= 0){
+		countLEDBuffer();
+		flag_delay = 0;
+	}
+}
+void presentCLOCK(void){
+	led_counter--;
+	if(led_counter <= 0){
+		led_counter = LED_TIME/TIMER_CYCLE;
+		HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_12);
+		clear7SEG(val);
+		val = updateIndex(val);
+		update7SEG(val);
+	}
+}
 
+void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim){
+		if(getModevalue() > 0){
+			blinkLED2Hz(getModevalue());
+		}
+		if(flag_delay == 1){
+			delayTimer();
+		}
+		//button_reading();
+		presentCLOCK();
 }
+
 /* USER CODE END 4 */
 
 /**
