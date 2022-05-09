@@ -1,0 +1,86 @@
+/*
+ * input_processing.c
+ *
+ *  Created on: Oct 18, 2021
+ *      Author: Duong
+ */
+#include "main.h"
+#include "input_processing.h"
+#include "input_reading.h"
+#include "Timer_Interrupt.h"
+enum ButtonName{MODE,TIME,EXEC};
+
+/////////////////////////////////MODE////////////////////////////////////////////////////
+//Initial mode
+static int status[NUMS_MODE] = {0,0,0,0};
+
+void initStatus(void){
+	for(int i =0 ;i < NUMS_MODE;i++){
+		status[i] = 0;
+	}
+}
+//########################################FSM##########################################///
+enum ButtonState { MODE_0, MODE_1, MODE_2, MODE_3};
+enum ButtonState buttonState = MODE_0;
+void fsm_for_input_processing(void){
+	switch(buttonState){
+	case MODE_0:
+		if(getDelayCounter() < 0){
+			updateClockBuffer(0,10);
+			startDelay(200);
+		}
+		if(is_button_pressed(0)){
+			buttonState = MODE_1;
+			InitTimer();
+			stopDelay();
+		}
+		break;
+	case MODE_1:
+		if(getDelayCounter() < 0){
+			updateClockBuffer(1,status[1]);
+			startDelay(100);
+		}
+		if(is_button_pressed(0)){
+			buttonState = MODE_2;
+			InitTimer();
+			stopDelay();
+		}
+		if (is_button_pressed(1)){
+			status[1]=(status[1]+1)%100;
+		}
+		if (is_button_pressed(2)){
+
+		}
+		break;
+	case MODE_2:
+		if(getDelayCounter() < 0){
+			updateClockBuffer(2,status[2]);
+			startDelay();
+		}
+		if(is_button_pressed(0)){
+			buttonState = MODE_3;
+			InitTimer();
+			stopDelay();
+		}
+		if (is_button_pressed(1)){
+			status[2]=(status[2]+1)%100;
+		}
+		break;
+	case MODE_3:
+		if(getDelayCounter() < 0){
+			updateClockBuffer(3,status[3]);
+			startDelay(100);
+		}
+		if(is_button_pressed(0)){
+			buttonState = MODE_1;
+			InitTimer();
+			stopDelay();
+		}
+		if (is_button_pressed(1)){
+			status[3]=(status[3]+1)%100;
+		}
+		break;
+	default:
+		buttonState = MODE_0;
+	}
+}

@@ -1,0 +1,11 @@
+/*
+ * input_reading.c
+ *
+ *  Created on: Nov 20, 2021
+ *      Author: Duong
+ */
+
+#include"main.h"
+#include"input_reading.h"
+
+

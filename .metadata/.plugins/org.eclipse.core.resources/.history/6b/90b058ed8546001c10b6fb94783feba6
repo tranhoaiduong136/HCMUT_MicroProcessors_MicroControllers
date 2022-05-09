@@ -1,0 +1,45 @@
+/*
+ * 3Color_led.h
+ *
+ *  Created on: Nov 3, 2021
+ *      Author: Duong
+ */
+
+#ifndef INC_3COLOR_LED_H_
+#define INC_3COLOR_LED_H_
+
+#define LED_PIN GPIOA
+#define RED1 GPIO_PIN_1
+#define YELLOW1 GPIO_PIN_2
+#define GREEN1 GPIO_PIN_3
+#define RED2 GPIO_PIN_4
+#define YELLOW2 GPIO_PIN_5
+#define GREEN2 GPIO_PIN_6
+// define sign
+#define ON RESET
+#define OFF SET
+//Counter
+#define R_COUNTER 5
+#define Y_COUNTER 2
+#define G_COUNTER 3
+#define LED_DELAY 500
+///ENABLE FOR LED 7 SEG
+#define GROUP_EN GPIOA
+#define EN0 GPIO_PIN_12
+#define EN1 GPIO_PIN_13
+#define EN2 GPIO_PIN_14
+#define EN3 GPIO_PIN_15
+#define NUMS 4 // Max led
+
+
+void initLED(void);
+void trafficLIGHTUpdate(int idx,int val);
+void trafficLIGHTStart(int led,int idx);
+void trafficLIGHTChangeColor(int led,int idx);
+// can be use
+int CurrentModetrafficLIGHT(void);
+void setLimitvalue(int,int,int);
+void blinkLED2Hz(int color);
+void fsm_for_trafficLIGHT(int mode);
+
+#endif /* INC_3COLOR_LED_H_ */

@@ -1,0 +1,10 @@
+15:41:59 **** Incremental Build of configuration Debug for project LED_BLINK_AND_TRAFFIC_LIGHTS ****
+make -j4 all 
+arm-none-eabi-size   LED_BLINK_AND_TRAFFIC_LIGHTS.elf 
+   text	   data	    bss	    dec	    hex	filename
+   5688	    160	   1584	   7432	   1d08	LED_BLINK_AND_TRAFFIC_LIGHTS.elf
+Finished building: default.size.stdout
+ 
+
+15:42:00 Build Finished. 0 errors, 0 warnings. (took 703ms)
+

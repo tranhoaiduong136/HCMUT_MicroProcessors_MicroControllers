@@ -1,0 +1,25 @@
+/*
+ * schedule.h
+ *
+ *  Created on: Nov 21, 2021
+ *      Author: Duong
+ */
+
+#ifndef INC_SCHEDULE_H_
+#define INC_SCHEDULE_H_
+
+typedef s t ruc t {
+3 // Pointer to the task (must be a ’ void ( void ) ’ function )
+4 void ( * pTask ) ( void ) ;
+5 // Delay ( ti c k s ) un til the function will ( next ) be run
+6 uin t32_ t Delay ;
+7 // In t e r v al ( ti c k s ) between subsequent runs .
+	uint32_ t Period ;
+// Incremented (by scheduler) when task i s due to execute
+	uint8_t RunMe;
+//This is a hint to solve the question below .
+	uint32_t TaskID ;
+}sTask ;
+
+
+#endif /* INC_SCHEDULE_H_ */

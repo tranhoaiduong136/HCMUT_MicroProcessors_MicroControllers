@@ -1,0 +1,95 @@
+/*
+ * 3Color_led.c
+ *
+ *  Created on: Nov 3, 2021
+ *      Author: Duong
+ */
+#include"3Color_led.h"
+#include"7SEG_LED.h"
+ uint16_t RedLED[NUMS_7SEGS] = {RED1,RED2};
+ uint16_t YellowLED[NUMS_7SEGS] = {YELLOW1,YELLOW2};
+ uint16_t GreenLED[NUMS_7SEGS] = {GREEN1,GREEN2};
+ uint16_t *typeLED[3] = {RedLED,YellowLED,GreenLED};
+static uint8_t counterBuffer[3] = {R_COUNTER,Y_COUNTER,G_COUNTER};
+
+void initLED(void){
+	HAL_GPIO_WritePin(GPIOA, RED1, OFF);
+	HAL_GPIO_WritePin(GPIOA, YELLOW1, OFF);
+	HAL_GPIO_WritePin(GPIOA, GREEN1, OFF);
+	HAL_GPIO_WritePin(GPIOA, RED2, OFF);
+	HAL_GPIO_WritePin(GPIOA, YELLOW2, OFF);
+	HAL_GPIO_WritePin(GPIOA, GREEN2, OFF);
+}
+void trafficLIGHTUpdate(int idx,int val){
+	updatesevenSegmentLEDBuffer(val,idx);
+	sevenSegementLEDDriver(idx);
+}
+void trafficLIGHTStart(int led,int idx){
+	  HAL_GPIO_WritePin(GPIOA, typeLED[led][idx], ON);
+}
+void trafficLIGHTChangeColor(int led,int idx){
+	HAL_GPIO_WritePin(GPIOA, typeLED[(led)%3][idx], OFF);
+	HAL_GPIO_WritePin(GPIOA, typeLED[(led+1)%3][idx], ON);
+}
+
+enum {RED,YELLOW,GREEN};
+ int color1 = RED;
+ int color2 = YELLOW;
+ int limit1 = counterBuffer[color1];
+ int limit2 = counterBuffer[color2];
+
+int	updateColor(int limit,int color,int index){
+	if(limit == -1)trafficLIGHTChangeColor(color,index);
+	return limit == -1 ? ++color%3 : color;
+}
+int updateLimit(int limit,int color){
+	return limit == -1 ? counterBuffer[color %3] : --limit;
+}
+int stateFlag = 0;
+int CurrentModetrafficLIGHT(void){
+	return stateFlag;
+}
+
+void setLimitvalue(int red,int amber,int green){
+	counterBuffer[RED] = red;
+	counterBuffer[YELLOW] = amber;
+	counterBuffer[GREEN] = green;
+	//Set up the limit again
+	limit1 = counterBuffer[color1];
+	limit2 = counterBuffer[color2];
+}
+
+void blinkLED2Hz(int color){
+	HAL_GPIO_TogglePin(LED_PIN, typeLED[color-1][0]);
+	HAL_GPIO_TogglePin(LED_PIN, typeLED[color-1][1]);
+}
+void fsm_for_trafficLIGHT(int mode){
+	switch(mode){
+		case 0:// Normal mode
+			  trafficLIGHTUpdate(0,limit1);
+			  trafficLIGHTUpdate(1,limit2);
+			  HAL_Delay(LED_DELAY);
+			  color1 = updateColor(limit1, color1,0);
+			  color2 = updateColor(limit2, color2,1);
+			  limit1 = updateLimit(limit1, color1,0);
+			  limit2 = updateLimit(limit2, color2,1);
+			  break;
+		case 1:
+			  initLED();
+			  stateFlag = 1;
+			  break;
+		case 2:
+			  initLED();
+			  stateFlag = 2;
+
+			  break;
+		case 3:
+			  initLED();
+			  stateFlag = 3;
+
+			  break;
+		default:
+			break;
+	}
+}
+

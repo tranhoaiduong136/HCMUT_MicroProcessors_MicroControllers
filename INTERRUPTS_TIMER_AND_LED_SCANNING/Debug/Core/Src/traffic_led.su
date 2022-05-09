@@ -1,0 +1,10 @@
+traffic_led.c:19:6:initLED	16	static
+traffic_led.c:32:6:trafficLIGHTStart	16	static
+traffic_led.c:35:6:trafficLIGHTChangeColor	16	static
+traffic_led.c:43:5:updateColor	24	static
+traffic_led.c:47:5:updateLimit	16	static
+traffic_led.c:50:5:getLimit1Value	4	static
+traffic_led.c:53:5:getLimit2Value	4	static
+traffic_led.c:57:6:setLimitvalue	16	static
+traffic_led.c:60:6:blinkLED2Hz	16	static
+traffic_led.c:64:6:countLEDBuffer	8	static

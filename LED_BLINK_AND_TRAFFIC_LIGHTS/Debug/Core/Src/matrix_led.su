@@ -1,0 +1,10 @@
+matrix_led.c:40:10:typeFunc	16	static
+matrix_led.c:74:6:matrixLEDInit	32	static
+matrix_led.c:101:6:updatematrixLEDBuffer	16	static
+matrix_led.c:104:6:setNumberOnClock	32	static
+matrix_led.c:117:6:clearNumberOnClock	32	static
+matrix_led.c:129:6:clearAllClock	16	static
+matrix_led.c:138:6:clockInit	4	static
+matrix_led.c:144:6:updateBuffer	4	static
+matrix_led.c:156:6:displayMatrixLed	16	static
+matrix_led.c:162:6:matrixLEDDriver	16	static
